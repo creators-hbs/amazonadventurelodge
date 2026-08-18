@@ -2,7 +2,22 @@ import fs from "node:fs";
 import path from "node:path";
 
 const root = process.cwd();
-const dist = path.join(root, "dist");
+const siteRoot = path.resolve(root, process.argv[2] || "dist");
+const deployEntries = [
+  "index.html",
+  "the-lodge",
+  "experiences",
+  "gallery",
+  "contact",
+  "company-policy",
+  "pt",
+  "package",
+  "produto",
+  "photo-gallery",
+  "contact-us",
+  "politica-da-empresa",
+  "sport-fishing",
+];
 const problems = [];
 
 function walk(dir) {
@@ -17,16 +32,16 @@ function walk(dir) {
 
 function routeToFile(route, fromFile) {
   const clean = route.split("#")[0].split("?")[0];
-  if (clean === "/" || clean === "") return path.join(dist, "index.html");
+  if (clean === "/" || clean === "") return path.join(siteRoot, "index.html");
   if (clean.startsWith(".")) return path.resolve(path.dirname(fromFile), clean);
   if (!clean.startsWith("/") && clean.endsWith(".html")) return path.resolve(path.dirname(fromFile), clean);
-  return path.join(dist, clean.replace(/^\/+/, ""), "index.html");
+  return path.join(siteRoot, clean.replace(/^\/+/, ""), "index.html");
 }
 
 function assetToFile(src, fromFile) {
   if (src.startsWith(".")) return path.resolve(path.dirname(fromFile), src);
   if (!src.startsWith("/")) return path.resolve(path.dirname(fromFile), src);
-  return path.join(dist, src.replace(/^\/+/, ""));
+  return path.join(siteRoot, src.replace(/^\/+/, ""));
 }
 
 function isExternal(value) {
@@ -35,7 +50,7 @@ function isExternal(value) {
 
 function checkHtml(file) {
   const html = fs.readFileSync(file, "utf8");
-  const rel = path.relative(dist, file).replaceAll("\\", "/");
+  const rel = path.relative(siteRoot, file).replaceAll("\\", "/");
   const isRedirect = /<meta http-equiv="refresh"/.test(html);
 
   if (/href=["']#["']/.test(html)) problems.push(`${rel}: contains href="#"`);
@@ -60,15 +75,25 @@ function checkHtml(file) {
   }
 }
 
-if (!fs.existsSync(dist)) {
-  problems.push("dist directory does not exist. Run npm run build first.");
+function deployHtmlFiles() {
+  if (siteRoot !== root) return walk(siteRoot).filter((file) => file.endsWith(".html"));
+  return deployEntries.flatMap((entry) => {
+    const full = path.join(siteRoot, entry);
+    if (!fs.existsSync(full)) return [];
+    if (fs.statSync(full).isDirectory()) return walk(full).filter((file) => file.endsWith(".html"));
+    return full.endsWith(".html") ? [full] : [];
+  });
+}
+
+if (!fs.existsSync(siteRoot)) {
+  problems.push(`${path.relative(root, siteRoot) || "."} directory does not exist. Run npm run build first.`);
 } else {
-  const htmlFiles = walk(dist).filter((file) => file.endsWith(".html"));
+  const htmlFiles = deployHtmlFiles();
   htmlFiles.forEach(checkHtml);
 
   const publicRoutes = htmlFiles
     .filter((file) => !fs.readFileSync(file, "utf8").includes('content="noindex"'))
-    .map((file) => path.relative(dist, file).replaceAll("\\", "/"));
+    .map((file) => path.relative(siteRoot, file).replaceAll("\\", "/"));
 
   if (publicRoutes.length < 24) problems.push(`expected at least 24 public pages, found ${publicRoutes.length}`);
 }
@@ -78,4 +103,4 @@ if (problems.length) {
   process.exit(1);
 }
 
-console.log("Route validation passed: no broken internal links, local assets, empty hrefs, or accidental /produto/ destinations found.");
+console.log(`Route validation passed for ${path.relative(root, siteRoot) || "."}: no broken internal links, local assets, empty hrefs, or accidental /produto/ destinations found.`);

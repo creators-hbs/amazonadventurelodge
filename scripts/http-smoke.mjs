@@ -4,6 +4,7 @@ import { experiences, routes } from "../src/site-data.mjs";
 
 const port = 4183;
 const host = `http://127.0.0.1:${port}`;
+const serveDir = process.argv[2];
 
 function publicRoutes() {
   return [
@@ -46,7 +47,7 @@ async function waitForServer() {
 
 const child = spawn(process.execPath, ["scripts/serve.mjs"], {
   cwd: process.cwd(),
-  env: { ...process.env, PORT: String(port) },
+  env: { ...process.env, PORT: String(port), ...(serveDir ? { SERVE_DIR: serveDir } : {}) },
   stdio: "ignore",
 });
 

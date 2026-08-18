@@ -18,6 +18,23 @@ import {
 const root = process.cwd();
 const dist = path.join(root, "dist");
 const assetDirs = ["assets/css", "assets/js", "assets/images", "assets/brand", "assets/icons"];
+const rootDeployEntries = [
+  "index.html",
+  "sitemap.xml",
+  "robots.txt",
+  "the-lodge",
+  "experiences",
+  "gallery",
+  "contact",
+  "company-policy",
+  "pt",
+  "package",
+  "produto",
+  "photo-gallery",
+  "contact-us",
+  "politica-da-empresa",
+  "sport-fishing",
+];
 const assetVersion = "20260818-03";
 const cssFiles = [`/assets/css/core.css?v=${assetVersion}`, `/assets/css/scroll-overrides.css?v=${assetVersion}`];
 const jsFiles = [
@@ -159,6 +176,23 @@ function copyRecursive(src, destPath) {
   } else {
     ensureDir(destPath);
     fs.copyFileSync(src, destPath);
+  }
+}
+
+function removeRootDeployEntry(entry) {
+  const target = path.resolve(root, entry);
+  if (target === root || !target.startsWith(`${root}${path.sep}`)) {
+    throw new Error(`Unsafe deploy output path: ${target}`);
+  }
+  fs.rmSync(target, { recursive: true, force: true });
+}
+
+function syncRootDeploy() {
+  for (const entry of rootDeployEntries) {
+    const from = path.join(dist, entry);
+    if (!fs.existsSync(from)) continue;
+    removeRootDeployEntry(entry);
+    copyRecursive(from, path.join(root, entry));
   }
 }
 
@@ -600,6 +634,7 @@ function build() {
   fs.writeFileSync(path.join(dist, "sitemap.xml"), sitemap());
   fs.writeFileSync(path.join(dist, "robots.txt"), robots());
   fs.writeFileSync(path.join(root, "IMAGE-PROMPTS.md"), `# Generated Image Prompts\n\n${imagePrompts.map(([file, prompt]) => `## ${file}\n\n${prompt}\n`).join("\n")}`);
+  syncRootDeploy();
 }
 
 build();

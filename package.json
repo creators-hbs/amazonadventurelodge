@@ -8,7 +8,9 @@
     "typecheck": "node --check src/site-data.mjs && node --check src/build.mjs && node --check scripts/validate-site.mjs",
     "build": "node src/build.mjs",
     "validate": "node scripts/validate-site.mjs",
+    "validate:root": "node scripts/validate-site.mjs .",
     "smoke": "node scripts/http-smoke.mjs",
+    "smoke:root": "node scripts/http-smoke.mjs .",
     "dev": "node scripts/serve.mjs"
   }
 }

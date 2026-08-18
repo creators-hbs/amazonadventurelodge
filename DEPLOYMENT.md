@@ -1,35 +1,44 @@
 # Amazon Adventure Lodge - Deploy
 
-O projeto esta organizado na pasta principal `Amazon Adventure Lodge`, com codigo-fonte separado do pacote final de publicacao.
-
 ## Estrutura profissional
 
 - `src/` - conteudo centralizado, rotas, dados EN/PT e gerador estatico.
 - `assets/` - arquivos fonte de CSS, JavaScript, logo e imagens.
 - `scripts/` - servidor local, validacao de links e smoke test HTTP.
-- `dist/` - site final pronto para publicacao.
+- `dist/` - copia final gerada para plataformas que usam pasta de publicacao.
+- `index.html` e pastas de rotas na raiz - site final pronto para upload direto da pasta pai.
 - `design-system.html` - referencia visual original preservada.
 - `IMAGE-PROMPTS.md` - prompts das imagens provisorias geradas.
 - `package.json` - comandos do projeto.
 
-## Importante
+## Deploy direto da pasta pai
 
-Para deploy, nao envie a pasta inteira `Amazon Adventure Lodge` como raiz publica do site.
+Depois de rodar o build, a pasta principal `Amazon Adventure Lodge` fica pronta para deploy. Envie para o servidor estes itens da raiz:
 
-Envie somente o conteudo de:
+- `index.html`
+- `assets/`
+- `the-lodge/`
+- `experiences/`
+- `gallery/`
+- `contact/`
+- `company-policy/`
+- `pt/`
+- `package/`
+- `produto/`
+- `photo-gallery/`
+- `contact-us/`
+- `politica-da-empresa/`
+- `sport-fishing/`
+- `sitemap.xml`
+- `robots.txt`
 
-```text
-dist/
-```
-
-Ou configure sua plataforma para usar `dist` como pasta de publicacao.
+As pastas `src/`, `scripts/`, `dist/` e arquivos de documentacao podem ficar fora do upload publico em deploy manual por FTP/cPanel.
 
 ## cPanel / Hostinger / FTP
 
 1. Rode `npm.cmd run build`.
-2. Abra a pasta `dist/`.
-3. Envie todo o conteudo de `dist/` para `public_html/`.
-4. O arquivo `dist/index.html` deve ficar como `public_html/index.html`.
+2. Envie os itens finais listados acima para `public_html/`.
+3. O arquivo `index.html` da raiz deve ficar como `public_html/index.html`.
 
 ## Netlify / Vercel / Cloudflare Pages
 
@@ -45,9 +54,11 @@ Publish directory:
 dist
 ```
 
+Tambem funciona publicar a raiz (`.`) depois do build, pois o gerador sincroniza os arquivos finais na pasta pai.
+
 ## Conferencia local
 
-O pacote `dist/` foi gerado com caminhos relativos. Portanto, abrir `dist/index.html` diretamente deve carregar CSS e imagens.
+Os HTMLs finais foram gerados com caminhos relativos. Portanto, abrir `index.html` ou `dist/index.html` diretamente deve carregar CSS, JS e imagens.
 
 Para testar como servidor:
 
@@ -71,4 +82,11 @@ npm.cmd run validate
 npm.cmd run smoke
 ```
 
-O deploy deve ser feito somente quando os tres comandos passarem sem erros.
+Para testar a raiz como deploy direto:
+
+```bash
+npm.cmd run validate:root
+npm.cmd run smoke:root
+```
+
+O deploy deve ser feito somente quando os comandos passarem sem erros.

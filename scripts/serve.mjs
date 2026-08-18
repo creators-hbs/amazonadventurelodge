@@ -2,7 +2,7 @@ import fs from "node:fs";
 import http from "node:http";
 import path from "node:path";
 
-const root = path.join(process.cwd(), "dist");
+const root = path.resolve(process.cwd(), process.env.SERVE_DIR || "dist");
 const preferredPort = Number(process.env.PORT || 4173);
 const types = {
   ".html": "text/html; charset=utf-8",
