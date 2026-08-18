@@ -1,0 +1,14 @@
+{
+  "name": "amazon-adventure-lodge-redesign",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint": "node --check src/site-data.mjs && node --check src/build.mjs && node --check scripts/validate-site.mjs",
+    "typecheck": "node --check src/site-data.mjs && node --check src/build.mjs && node --check scripts/validate-site.mjs",
+    "build": "node src/build.mjs",
+    "validate": "node scripts/validate-site.mjs",
+    "smoke": "node scripts/http-smoke.mjs",
+    "dev": "node scripts/serve.mjs"
+  }
+}
