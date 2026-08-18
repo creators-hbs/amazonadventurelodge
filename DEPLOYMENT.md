@@ -6,6 +6,7 @@
 - `assets/` - arquivos fonte de CSS, JavaScript, logo e imagens.
 - `scripts/` - servidor local, validacao de links e smoke test HTTP.
 - `dist/` - copia final gerada para plataformas que usam pasta de publicacao.
+- `public/` - copia final gerada para Vercel quando a saida esta configurada como `public`.
 - `index.html` e pastas de rotas na raiz - site final pronto para upload direto da pasta pai.
 - `design-system.html` - referencia visual original preservada.
 - `IMAGE-PROMPTS.md` - prompts das imagens provisorias geradas.
@@ -32,7 +33,7 @@ Depois de rodar o build, a pasta principal `Amazon Adventure Lodge` fica pronta 
 - `sitemap.xml`
 - `robots.txt`
 
-As pastas `src/`, `scripts/`, `dist/` e arquivos de documentacao podem ficar fora do upload publico em deploy manual por FTP/cPanel.
+As pastas `src/`, `scripts/`, `dist/`, `public/` e arquivos de documentacao podem ficar fora do upload publico em deploy manual por FTP/cPanel.
 
 ## cPanel / Hostinger / FTP
 
@@ -40,7 +41,32 @@ As pastas `src/`, `scripts/`, `dist/` e arquivos de documentacao podem ficar for
 2. Envie os itens finais listados acima para `public_html/`.
 3. O arquivo `index.html` da raiz deve ficar como `public_html/index.html`.
 
-## Netlify / Vercel / Cloudflare Pages
+## Vercel
+
+O projeto possui `vercel.json` configurado para:
+
+```json
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "public"
+}
+```
+
+Na Vercel, use:
+
+Build command:
+
+```bash
+npm run build
+```
+
+Output directory:
+
+```text
+public
+```
+
+## Netlify / Cloudflare Pages
 
 Build command:
 
@@ -79,7 +105,9 @@ Sempre rode:
 ```bash
 npm.cmd run build
 npm.cmd run validate
+npm.cmd run validate:public
 npm.cmd run smoke
+npm.cmd run smoke:public
 ```
 
 Para testar a raiz como deploy direto:

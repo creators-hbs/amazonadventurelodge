@@ -9,8 +9,10 @@
     "build": "node src/build.mjs",
     "validate": "node scripts/validate-site.mjs",
     "validate:root": "node scripts/validate-site.mjs .",
+    "validate:public": "node scripts/validate-site.mjs public",
     "smoke": "node scripts/http-smoke.mjs",
     "smoke:root": "node scripts/http-smoke.mjs .",
+    "smoke:public": "node scripts/http-smoke.mjs public",
     "dev": "node scripts/serve.mjs"
   }
 }

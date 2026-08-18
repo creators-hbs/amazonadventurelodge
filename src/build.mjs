@@ -17,6 +17,7 @@ import {
 
 const root = process.cwd();
 const dist = path.join(root, "dist");
+const publicDir = path.join(root, "public");
 const assetDirs = ["assets/css", "assets/js", "assets/images", "assets/brand", "assets/icons"];
 const rootDeployEntries = [
   "index.html",
@@ -187,6 +188,15 @@ function removeRootDeployEntry(entry) {
   fs.rmSync(target, { recursive: true, force: true });
 }
 
+function resetGeneratedDir(dirPath) {
+  const target = path.resolve(dirPath);
+  if (target === root || !target.startsWith(`${root}${path.sep}`)) {
+    throw new Error(`Unsafe generated output path: ${target}`);
+  }
+  fs.rmSync(target, { recursive: true, force: true });
+  fs.mkdirSync(target, { recursive: true });
+}
+
 function syncRootDeploy() {
   for (const entry of rootDeployEntries) {
     const from = path.join(dist, entry);
@@ -194,6 +204,11 @@ function syncRootDeploy() {
     removeRootDeployEntry(entry);
     copyRecursive(from, path.join(root, entry));
   }
+}
+
+function syncPublicDeploy() {
+  resetGeneratedDir(publicDir);
+  copyRecursive(dist, publicDir);
 }
 
 function logoMarkup() {
@@ -635,6 +650,7 @@ function build() {
   fs.writeFileSync(path.join(dist, "robots.txt"), robots());
   fs.writeFileSync(path.join(root, "IMAGE-PROMPTS.md"), `# Generated Image Prompts\n\n${imagePrompts.map(([file, prompt]) => `## ${file}\n\n${prompt}\n`).join("\n")}`);
   syncRootDeploy();
+  syncPublicDeploy();
 }
 
 build();
