@@ -16,14 +16,15 @@
     if (element.dataset.splitReady) return;
     const words = element.textContent.trim().split(/\s+/);
     element.textContent = "";
-    words.forEach((word) => {
+    words.forEach((word, index) => {
       const wrap = document.createElement("span");
       wrap.className = "word-wrap";
       const inner = document.createElement("span");
       inner.className = "word-inner";
-      inner.textContent = `${word} `;
+      inner.textContent = word;
       wrap.appendChild(inner);
       element.appendChild(wrap);
+      if (index < words.length - 1) element.appendChild(document.createTextNode(" "));
     });
     element.dataset.splitReady = "true";
   }

@@ -1,6 +1,7 @@
 export const siteConfig = {
   name: "Amazon Adventure Lodge",
   location: "Lago do Macarico, Amazonas, Brazil",
+  locationPt: "Lago do Maçarico, Amazonas, Brasil",
   logoPath: "/assets/brand/logo_transp_amazon_adv.png",
   whatsappDisplay: "+55 92 8437-8024",
   whatsappNumber: "559284378024",
@@ -14,38 +15,47 @@ export const images = {
   hero: {
     src: "/assets/images/generated/hero-amazon-lodge.jpg",
     alt: "Boat crossing calm Amazon water at sunrise surrounded by rainforest.",
+    altPt: "Barco atravessando águas calmas da Amazônia ao nascer do sol, cercado pela floresta.",
   },
   lodge: {
     src: "/assets/images/generated/lodge-exterior.jpg",
     alt: "Wooden Amazon jungle chalets connected by a boardwalk in dense forest.",
+    altPt: "Chalés de madeira na floresta amazônica conectados por uma passarela em meio à mata.",
   },
   room: {
     src: "/assets/images/generated/private-chalet.jpg",
     alt: "Simple private wooden chalet interior with white bedding and forest view.",
+    altPt: "Interior simples de chalé privativo de madeira, com roupa de cama branca e vista para a floresta.",
   },
   canoe: {
     src: "/assets/images/generated/canoe-experience.jpg",
     alt: "Travelers and a local guide exploring flooded Amazon forest by canoe.",
+    altPt: "Viajantes e guia local explorando a floresta amazônica alagada de canoa.",
   },
   sunset: {
     src: "/assets/images/generated/amazon-sunset.jpg",
     alt: "Golden Amazon sunset over calm water and forest silhouettes.",
+    altPt: "Pôr do sol dourado na Amazônia sobre águas calmas e silhuetas da floresta.",
   },
   trek: {
     src: "/assets/images/generated/jungle-trek.jpg",
     alt: "Local guide leading travelers on an Amazon rainforest trail.",
+    altPt: "Guia local conduzindo viajantes por uma trilha na floresta amazônica.",
   },
   survival: {
     src: "/assets/images/generated/survival-camp.jpg",
     alt: "Guided Amazon survival camp with hammocks and a controlled campfire.",
+    altPt: "Acampamento guiado de sobrevivência na Amazônia com redes e fogueira controlada.",
   },
   fishing: {
     src: "/assets/images/generated/sport-fishing-lodge-release.png",
     alt: "Sport fishing by boat on calm Amazon water with local guide.",
+    altPt: "Pesca esportiva em barco sobre águas calmas da Amazônia com guia local.",
   },
   wildlife: {
     src: "/assets/images/generated/wildlife-dolphin.jpg",
     alt: "Pink river dolphin surfacing at a respectful distance in Amazon water.",
+    altPt: "Boto-cor-de-rosa emergindo a uma distância respeitosa nas águas amazônicas.",
   },
 };
 
@@ -92,8 +102,8 @@ export const nav = {
     ["Contact", routes.en.contact],
   ],
   pt: [
-    ["O Lodge", routes.pt.lodge],
-    ["Experiencias", routes.pt.experiences],
+    ["A Pousada", routes.pt.lodge],
+    ["Experiências", routes.pt.experiences],
     ["Galeria", routes.pt.gallery],
     ["Contato", routes.pt.contact],
   ],
@@ -108,9 +118,9 @@ export const included = [
 
 export const includedPt = [
   "Traslado ida e volta a partir de Manaus",
-  "Acomodacao em chale privativo",
-  "Cafe da manha, almoco e jantar durante o programa no lodge",
-  "Guia em ingles ou espanhol",
+  "Acomodação em chalé privativo",
+  "Café da manhã, almoço e jantar durante o programa na pousada",
+  "Guia em inglês ou espanhol",
 ];
 
 export const experiences = [
@@ -145,22 +155,22 @@ export const experiences = [
       practical: "Designed for travelers with limited time who still want a real lodge-based Amazon experience.",
     },
     pt: {
-      title: "Experiencia Amazon Adventure Lodge - 2 Dias",
-      shortTitle: "Experiencia 2 Dias",
+      title: "Experiência Amazon Adventure Lodge - 2 Dias",
+      shortTitle: "Experiência 2 Dias",
       summary:
-        "Uma introducao compacta a Amazonia com Encontro das Aguas, passeio de canoa, nascer e por do sol, trilha interpretativa e observacao noturna de jacares.",
+        "Uma introdução compacta à Amazônia com Encontro das Águas, passeio de canoa, nascer e pôr do sol, trilha interpretativa e observação noturna de jacarés.",
       highlights: [
-        "Encontro das Aguas",
-        "Passeios ao nascer e ao por do sol",
-        "Observacao de jacares",
+        "Encontro das Águas",
+        "Passeios ao nascer e ao pôr do sol",
+        "Observação de jacarés",
         "Trilha guiada na floresta",
         "Oportunidade de observar botos e aves",
       ],
       itinerary: [
-        ["Dia 1", "Saida de Manaus por volta das 08:00, passando pelo Porto da Ceasa, Encontro das Aguas, travessia, transporte terrestre e Lago do Macarico ate chegar ao lodge por volta das 11:30. Apos o almoco, exploracao de canoa com oportunidades de observar aves e botos conforme as condicoes, por do sol, jantar e observacao noturna de jacares."],
-        ["Dia 2", "Saida de canoa por volta das 05:30 para o nascer do sol, cafe da manha e trilha guiada com plantas medicinais, tecnicas de sobrevivencia, arvores, insetos e interpretacao da fauna. Apos o almoco, retorno para Manaus por volta das 13:30, com chegada prevista no final da tarde."],
+        ["Dia 1", "Saída de Manaus por volta das 08:00, passando pelo Porto da Ceasa, Encontro das Águas, travessia, transporte terrestre e Lago do Maçarico até chegar à pousada por volta das 11:30. Após o almoço, exploração de canoa com oportunidades de observar aves e botos conforme as condições, pôr do sol, jantar e observação noturna de jacarés."],
+        ["Dia 2", "Saída de canoa por volta das 05:30 para o nascer do sol, café da manhã e trilha guiada com plantas medicinais, técnicas de sobrevivência, árvores, insetos e interpretação da fauna. Após o almoço, retorno para Manaus por volta das 13:30, com chegada prevista no final da tarde."],
       ],
-      practical: "Ideal para quem tem pouco tempo e deseja uma experiencia amazonica real com base no lodge.",
+      practical: "Ideal para quem tem pouco tempo e deseja uma experiência amazônica real com base na pousada.",
     },
   },
   {
@@ -189,17 +199,17 @@ export const experiences = [
       practical: "A strong first Amazon journey for travelers who want more breathing room than an overnight stay.",
     },
     pt: {
-      title: "Amazon Jungle Tour: 3 Dias / 2 Noites",
-      shortTitle: "Amazon Jungle Tour",
+      title: "Tour na Selva Amazônica: 3 Dias / 2 Noites",
+      shortTitle: "Tour na Selva Amazônica",
       summary:
-        "Um programa equilibrado no lodge com canoa, interpretacao da floresta e visita respeitosa a uma familia ribeirinha para conhecer modos de vida locais.",
-      highlights: ["Passeio de canoa", "Igarapes e igapos", "Visita ribeirinha", "Trilha na floresta", "Nascer e por do sol"],
+        "Um programa equilibrado na pousada com passeio de canoa, interpretação da floresta e visita respeitosa a uma família ribeirinha para conhecer modos de vida locais.",
+      highlights: ["Passeio de canoa", "Igarapés e igapós", "Visita ribeirinha", "Trilha na floresta", "Nascer e pôr do sol"],
       itinerary: [
-        ["Dia 1", "Rota de chegada a partir de Manaus, almoco no lodge, passeio de canoa, por do sol, jantar e observacao noturna de jacares conforme condicoes."],
-        ["Dia 2", "Saida para nascer do sol, trilha guiada e canoagem por igapos e floresta alagada quando o nivel da agua permitir."],
-        ["Dia 3", "Cafe da manha, visita respeitosa a uma familia ribeirinha para conhecer o modo de vida local, almoco e retorno a Manaus."],
+        ["Dia 1", "Rota de chegada a partir de Manaus, almoço na pousada, passeio de canoa, pôr do sol, jantar e observação noturna de jacarés conforme as condições."],
+        ["Dia 2", "Saída para o nascer do sol, trilha guiada e canoagem por igapós e floresta alagada quando o nível da água permitir."],
+        ["Dia 3", "Café da manhã, visita respeitosa a uma família ribeirinha para conhecer o modo de vida local, almoço e retorno a Manaus."],
       ],
-      practical: "Uma primeira viagem amazonica completa para quem deseja mais tempo do que uma unica noite.",
+      practical: "Uma primeira viagem amazônica completa para quem deseja mais tempo do que uma única noite.",
     },
   },
   {
@@ -228,17 +238,17 @@ export const experiences = [
       practical: "Best for travelers seeking a more immersive route without moving into a long expedition pace.",
     },
     pt: {
-      title: "Lake Macarico Amazon Tour - 4 Dias",
-      shortTitle: "Lake Macarico Amazon Tour",
+      title: "Tour Amazônico no Lago do Maçarico - 4 Dias",
+      shortTitle: "Tour no Lago do Maçarico",
       summary:
-        "Um roteiro mais profundo no Lago do Macarico com camping na floresta, tecnicas praticas de sobrevivencia e atividades conforme clima e nivel das aguas.",
-      highlights: ["Camping na floresta", "Interpretacao de sobrevivencia", "Cultura ribeirinha", "Pesca noturna tradicional conforme condicoes", "Atividades sazonais"],
+        "Um roteiro mais profundo no Lago do Maçarico com camping na floresta, técnicas práticas de sobrevivência e atividades conforme o clima e o nível das águas.",
+      highlights: ["Camping na floresta", "Interpretação de sobrevivência", "Cultura ribeirinha", "Pesca noturna tradicional conforme as condições", "Atividades sazonais"],
       itinerary: [
-        ["Dias 1-2", "Inclui as experiencias centrais de lodge, canoa, nascer e por do sol, trilha e cultura ribeirinha dos programas mais curtos."],
-        ["Dia 3", "Saida para camping na floresta com tecnicas de sobrevivencia, possibilidade de pesca noturna tradicional conforme condicoes e pernoite na mata."],
-        ["Dia 4", "Atividade matinal sazonal dependendo do clima e da agua, retorno ao lodge, almoco e traslado para Manaus."],
+        ["Dias 1-2", "Inclui as experiências centrais da pousada, canoa, nascer e pôr do sol, trilha e cultura ribeirinha dos programas mais curtos."],
+        ["Dia 3", "Saída para camping na floresta com técnicas de sobrevivência, possibilidade de pesca noturna tradicional conforme as condições e pernoite na mata."],
+        ["Dia 4", "Atividade matinal sazonal dependendo do clima e da água, retorno à pousada, almoço e traslado para Manaus."],
       ],
-      practical: "Indicado para viajantes que querem mais imersao sem chegar ao ritmo de uma expedicao longa.",
+      practical: "Indicado para viajantes que querem mais imersão sem chegar ao ritmo de uma expedição longa.",
     },
   },
   {
@@ -267,17 +277,17 @@ export const experiences = [
       practical: "For travelers who want a fuller expedition arc while still returning to the lodge structure.",
     },
     pt: {
-      title: "Expedicao Amazonica: 5 Dias saindo de Manaus",
-      shortTitle: "Expedicao Amazonica",
+      title: "Expedição Amazônica: 5 Dias saindo de Manaus",
+      shortTitle: "Expedição Amazônica",
       summary:
-        "Um ritmo de expedicao mais longo com conforto do lodge, trilhas, canoas, cultura ribeirinha, camping, sobrevivencia e atividades noturnas.",
-      highlights: ["Imersao amazonica prolongada", "Pernoite em acampamento", "Rotas de canoa e trilha", "Cultura ribeirinha", "Atividades noturnas"],
+        "Um ritmo de expedição mais longo com conforto da pousada, trilhas, canoas, cultura ribeirinha, camping, sobrevivência e atividades noturnas.",
+      highlights: ["Imersão amazônica prolongada", "Pernoite em acampamento", "Rotas de canoa e trilha", "Cultura ribeirinha", "Atividades noturnas"],
       itinerary: [
-        ["Dias 1-2", "Inicio com chegada ao lodge, rotas de canoa, nascer e por do sol, trilhas guiadas e observacao noturna."],
-        ["Dias 3-4", "Continuidade com cultura ribeirinha, camping na floresta, tecnicas de sobrevivencia e atividades noturnas guiadas."],
-        ["Dia 5", "Retorno do acampamento ao lodge, almoco e traslado de volta para Manaus."],
+        ["Dias 1-2", "Início com chegada à pousada, rotas de canoa, nascer e pôr do sol, trilhas guiadas e observação noturna."],
+        ["Dias 3-4", "Continuidade com cultura ribeirinha, camping na floresta, técnicas de sobrevivência e atividades noturnas guiadas."],
+        ["Dia 5", "Retorno do acampamento à pousada, almoço e traslado de volta para Manaus."],
       ],
-      practical: "Para viajantes que desejam uma experiencia mais completa mantendo a estrutura do lodge.",
+      practical: "Para viajantes que desejam uma experiência mais completa mantendo a estrutura da pousada.",
     },
   },
   {
@@ -306,17 +316,17 @@ export const experiences = [
       practical: "Adventurous and dramatic in tone, but always presented as a guided and responsible program.",
     },
     pt: {
-      title: "Amazon Survival Tours",
-      shortTitle: "Amazon Survival Tours",
+      title: "Tour de Sobrevivência na Amazônia",
+      shortTitle: "Sobrevivência na Amazônia",
       summary:
-        "Programa guiado com foco em sobrevivencia, conhecimento pratico da floresta, redes com mosquiteiro, navegacao, botanica e observacao responsavel da fauna.",
-      highlights: ["Construcao de abrigo", "Busca de agua potavel", "Tecnicas naturais de fogo", "Navegacao na selva", "Redes com mosquiteiros"],
+        "Programa guiado com foco em sobrevivência, conhecimento prático da floresta, redes com mosquiteiro, navegação, botânica e observação responsável da fauna.",
+      highlights: ["Construção de abrigo", "Busca de água potável", "Técnicas naturais de fogo", "Navegação na selva", "Redes com mosquiteiros"],
       itinerary: [
-        ["Orientacao", "Inicio com briefing de seguranca, organizacao de equipamentos e introducao guiada ao ambiente da floresta."],
-        ["Habilidades de Floresta", "Pratica de abrigo, agua potavel, fogo natural, navegacao, botanica aplicada, plantas medicinais, arvores nativas e frutos comestiveis."],
-        ["Vida no Acampamento", "Pesca tradicional, navegacao de canoa, pernoite em redes com mosquiteiros, observacao de fauna e jacares a noite quando as condicoes permitirem."],
+        ["Orientação", "Início com briefing de segurança, organização de equipamentos e introdução guiada ao ambiente da floresta."],
+        ["Habilidades de Floresta", "Prática de abrigo, água potável, fogo natural, navegação, botânica aplicada, plantas medicinais, árvores nativas e frutos comestíveis."],
+        ["Vida no Acampamento", "Pesca tradicional, navegação de canoa, pernoite em redes com mosquiteiros, observação de fauna e jacarés à noite quando as condições permitirem."],
       ],
-      practical: "Aventureiro e dramatico, mas sempre apresentado como programa guiado e responsavel.",
+      practical: "Aventureiro e intenso, mas sempre apresentado como programa guiado e responsável.",
     },
   },
   {
@@ -350,21 +360,21 @@ export const experiences = [
       practical: "May include Peacock Bass, Arowanas and Amazon catfish depending on season, route and conditions.",
     },
     pt: {
-      title: "Amazon Sport Fishing Lodge",
-      shortTitle: "Sport Fishing Lodge",
+      title: "Pousada de Pesca Esportiva na Amazônia",
+      shortTitle: "Pesca Esportiva",
       summary:
-        "Pesca esportiva no Lago do Macarico, Rio Juma e Parana do Mamori com guias locais, contexto de pesque-e-solte e sem promessa de especies ou capturas garantidas.",
-      highlights: ["Lago do Macarico", "Rio Juma", "Parana do Mamori", "Tucunare-Acu", "Contexto de pesque-e-solte"],
+        "Pesca esportiva no Lago do Maçarico, Rio Juma e Paraná do Mamori com guias locais, contexto de pesque-e-solte e sem promessa de espécies ou capturas garantidas.",
+      highlights: ["Lago do Maçarico", "Rio Juma", "Paraná do Mamori", "Tucunaré-Açu", "Contexto de pesque-e-solte"],
       itinerary: [
-        ["05:30", "Cafe da manha"],
-        ["06:00", "Pesca pela manha"],
-        ["11:00", "Retorno ao lodge"],
-        ["12:00", "Almoco"],
-        ["14:00", "Pesca a tarde"],
+        ["05:30", "Café da manhã"],
+        ["06:00", "Pesca pela manhã"],
+        ["11:00", "Retorno à pousada"],
+        ["12:00", "Almoço"],
+        ["14:00", "Pesca à tarde"],
         ["18:00", "Retorno"],
         ["19:00", "Jantar"],
       ],
-      practical: "Pode envolver Tucunare-Acu, aruanas e bagres amazonicos conforme temporada, rota e condicoes.",
+      practical: "Pode envolver tucunaré-açu, aruanãs e bagres amazônicos conforme temporada, rota e condições.",
     },
   },
 ];
@@ -377,10 +387,10 @@ export const pillars = {
     ["Preservation", "Responsible tourism and respect for Amazon nature."],
   ],
   pt: [
-    ["Guias Bilingues", "Guias preparados para receber visitantes internacionais."],
-    ["Traslado desde Manaus", "Transfer estruturado de Manaus ate o lodge."],
+    ["Guias Bilíngues", "Guias preparados para receber visitantes internacionais."],
+    ["Traslado desde Manaus", "Transfer estruturado de Manaus até a pousada."],
     ["Hospitalidade & Qualidade", "Conforto e acolhimento cercados pela floresta."],
-    ["Preservacao", "Turismo responsavel e respeito pela natureza amazonica."],
+    ["Preservação", "Turismo responsável e respeito pela natureza amazônica."],
   ],
 };
 
@@ -403,34 +413,34 @@ export const activities = {
     "sport fishing",
   ],
   pt: [
-    "Encontro das Aguas",
-    "nascer do sol amazonico",
-    "por do sol amazonico",
-    "exploracao de canoa",
+    "Encontro das Águas",
+    "nascer do sol amazônico",
+    "pôr do sol amazônico",
+    "exploração de canoa",
     "floresta alagada",
-    "observacao de aves",
+    "observação de aves",
     "oportunidade de observar botos rosa e cinza",
-    "observacao noturna de jacares conforme condicoes",
+    "observação noturna de jacarés conforme as condições",
     "trilhas na floresta",
-    "interpretacao de plantas medicinais",
+    "interpretação de plantas medicinais",
     "pesca de piranha",
     "cultura ribeirinha",
     "camping na floresta",
-    "tecnicas de sobrevivencia",
+    "técnicas de sobrevivência",
     "pesca esportiva",
   ],
 };
 
 export const gallery = [
-  { category: "Water", image: images.hero },
-  { category: "Lodge", image: images.lodge },
-  { category: "Rooms", image: images.room },
-  { category: "Water", image: images.canoe },
-  { category: "Water", image: images.sunset },
-  { category: "Jungle", image: images.trek },
-  { category: "Expeditions", image: images.survival },
-  { category: "Fishing", image: images.fishing },
-  { category: "Wildlife", image: images.wildlife },
+  { category: "Water", categoryPt: "Águas", image: images.hero },
+  { category: "Lodge", categoryPt: "Pousada", image: images.lodge },
+  { category: "Rooms", categoryPt: "Chalés", image: images.room },
+  { category: "Water", categoryPt: "Águas", image: images.canoe },
+  { category: "Water", categoryPt: "Águas", image: images.sunset },
+  { category: "Jungle", categoryPt: "Floresta", image: images.trek },
+  { category: "Expeditions", categoryPt: "Expedições", image: images.survival },
+  { category: "Fishing", categoryPt: "Pesca", image: images.fishing },
+  { category: "Wildlife", categoryPt: "Fauna", image: images.wildlife },
 ];
 
 export const policy = {
@@ -446,15 +456,15 @@ export const policy = {
     ["Values", "The brand declares commitment to human rights, Amazon rainforest protection, the environment, animal welfare and respect for cultures, nationalities, beliefs, races, identities and sexual orientations."],
   ],
   pt: [
-    ["Reservas", "A reserva realizada pelo site e confirmada apos o processamento bem-sucedido do pagamento. Alteracoes estao sujeitas a disponibilidade."],
-    ["Formas de Pagamento", "Reservas online podem usar cartao de credito ou debito. Reservas diretas com a equipe podem usar link seguro de pagamento por cartao ou PIX para clientes brasileiros. Reservas diretas exigem deposito de 30% para confirmacao, com saldo no check-in."],
+    ["Reservas", "A reserva realizada pelo site é confirmada após o processamento bem-sucedido do pagamento. Alterações estão sujeitas à disponibilidade."],
+    ["Formas de Pagamento", "Reservas online podem usar cartão de crédito ou débito. Reservas diretas com a equipe podem usar link seguro de pagamento por cartão ou PIX para clientes brasileiros. Reservas diretas exigem depósito de 30% para confirmação, com saldo no check-in."],
     ["Cancelamento", "Reembolso de 80% quando cancelado 6 ou mais dias antes do check-in; 60% entre 5 e 3 dias antes do check-in; sem reembolso a menos de 2 dias do check-in."],
-    ["No-show", "Nao ha reembolso em caso de nao comparecimento."],
-    ["Saida antecipada", "Nao ha reembolso parcial ou integral apos o inicio dos servicos quando o hospede encerra voluntariamente o programa antes do previsto."],
-    ["Informacoes Importantes", "Bagagem maxima de 15 kg / 33 lbs por hospede. Restricoes alimentares, alergias e necessidades especiais devem ser informadas antes da chegada."],
-    ["Protecao Ambiental", "E proibido capturar, alimentar, transportar ou ferir animais silvestres, bem como coletar plantas, sementes, flores, madeira ou recursos naturais."],
-    ["Seguranca", "Recomenda-se o uso dos coletes disponibilizados, especialmente em atividades aquaticas."],
-    ["Valores", "A marca declara compromisso com direitos humanos, protecao da floresta amazonica, meio ambiente, bem-estar animal e respeito a culturas, nacionalidades, crencas, racas, identidades e orientacoes sexuais."],
+    ["Não comparecimento", "Não há reembolso em caso de não comparecimento."],
+    ["Saída antecipada", "Não há reembolso parcial ou integral após o início dos serviços quando o hóspede encerra voluntariamente o programa antes do previsto."],
+    ["Informações Importantes", "Bagagem máxima de 15 kg / 33 lbs por hóspede. Restrições alimentares, alergias e necessidades especiais devem ser informadas antes da chegada."],
+    ["Proteção Ambiental", "É proibido capturar, alimentar, transportar ou ferir animais silvestres, bem como coletar plantas, sementes, flores, madeira ou recursos naturais."],
+    ["Segurança", "Recomenda-se o uso dos coletes disponibilizados, especialmente em atividades aquáticas."],
+    ["Valores", "A marca declara compromisso com direitos humanos, proteção da floresta amazônica, meio ambiente, bem-estar animal e respeito a culturas, nacionalidades, crenças, raças, identidades e orientações sexuais."],
   ],
 };
 

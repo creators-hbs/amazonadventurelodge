@@ -36,7 +36,7 @@ const rootDeployEntries = [
   "politica-da-empresa",
   "sport-fishing",
 ];
-const assetVersion = "20260818-03";
+const assetVersion = "20260818-04";
 const cssFiles = [`/assets/css/core.css?v=${assetVersion}`, `/assets/css/scroll-overrides.css?v=${assetVersion}`];
 const jsFiles = [
   "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js",
@@ -76,31 +76,39 @@ const labels = {
   pt: {
     lang: "pt-BR",
     otherLang: "EN",
-    explore: "Explorar Experiencias",
+    explore: "Explorar Experiências",
     plan: "Planejar Estadia",
     check: "Consultar Disponibilidade",
-    lodge: "O Lodge",
-    experiences: "Experiencias",
+    lodge: "A Pousada",
+    experiences: "Experiências",
     gallery: "Galeria",
     contact: "Contato",
-    policy: "Politica da Empresa",
+    policy: "Política da Empresa",
     from: "A partir de",
-    duration: "Duracao",
-    price: "Preco",
+    duration: "Duração",
+    price: "Preço",
     highlights: "Destaques",
     itinerary: "Roteiro",
     included: "Incluso",
-    practical: "Informacoes praticas",
-    related: "Experiencias relacionadas",
+    practical: "Informações práticas",
+    related: "Experiências relacionadas",
     all: "Todos",
-    categories: ["Todos", "Short Stay", "Jungle Immersion", "Survival", "Sport Fishing"],
-    ready: "Pronto para a Amazonia?",
+    categories: [
+      ["Todos", "All"],
+      ["Estadias curtas", "Short Stay"],
+      ["Imersão na selva", "Jungle Immersion"],
+      ["Sobrevivência", "Survival"],
+      ["Pesca esportiva", "Sport Fishing"],
+    ],
+    ready: "Pronto para a Amazônia?",
     footerHeadline: "PLANEJE SUA JORNADA",
-    breadcrumbHome: "Inicio",
+    breadcrumbHome: "Início",
     formTitle: "Conte-nos sobre sua viagem",
     submit: "Preparar mensagem no WhatsApp",
   },
 };
+
+labels.en.categories = labels.en.categories.map((category) => [category, category]);
 
 const langOf = (route) => route.startsWith("/pt/") || route === "/pt/" ? "pt" : "en";
 const byKey = Object.fromEntries(experiences.map((item) => [item.key, item]));
@@ -126,9 +134,17 @@ function escapeHtml(value) {
 
 function attrs(values) {
   return Object.entries(values)
-    .filter(([, value]) => value !== false && value !== undefined && value !== null)
+    .filter(([, value]) => value !== false && value !== undefined && value !== null && value !== "")
     .map(([key, value]) => (value === true ? key : `${key}="${escapeHtml(value)}"`))
     .join(" ");
+}
+
+function imageAlt(image, lang) {
+  return lang === "pt" && image.altPt ? image.altPt : image.alt;
+}
+
+function locationLabel(lang) {
+  return lang === "pt" ? siteConfig.locationPt : siteConfig.location;
 }
 
 function writePage(route, html) {
@@ -218,16 +234,16 @@ function logoMarkup() {
 function header(lang, currentRoute) {
   const l = labels[lang];
   return `<header class="site-header" data-site-header>
-  <a class="brand-link" href="${routes[lang].home}" aria-label="${siteConfig.name} home">${logoMarkup()}</a>
-  <nav class="desktop-nav" aria-label="Primary navigation">${nav[lang].map(([text, href]) => `<a href="${href}"${href === currentRoute ? " aria-current=\"page\"" : ""}>${escapeHtml(text)}</a>`).join("")}</nav>
+  <a class="brand-link" href="${routes[lang].home}" aria-label="${lang === "pt" ? `${siteConfig.name} início` : `${siteConfig.name} home`}">${logoMarkup()}</a>
+  <nav class="desktop-nav" aria-label="${lang === "pt" ? "Navegação principal" : "Primary navigation"}">${nav[lang].map(([text, href]) => `<a href="${href}"${href === currentRoute ? " aria-current=\"page\"" : ""}>${escapeHtml(text)}</a>`).join("")}</nav>
   <div class="header-actions">
     <a class="language-link" href="${alternateRoute[currentRoute] || routes[lang === "en" ? "pt" : "en"].home}" hreflang="${lang === "en" ? "pt-BR" : "en"}">${l.otherLang}</a>
     <a class="btn btn-small" href="${routes[lang].contact}">${l.check}</a>
-    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span></button>
+    <button class="menu-toggle" type="button" aria-label="${lang === "pt" ? "Abrir menu" : "Open menu"}" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span></button>
   </div>
   <div class="mobile-menu" id="mobile-menu" hidden>
     <div class="mobile-menu-brand">${logoMarkup()}</div>
-    <nav aria-label="Mobile navigation">${nav[lang].map(([text, href]) => `<a href="${href}">${escapeHtml(text)}</a>`).join("")}<a href="${routes[lang].companyPolicy}">${l.policy}</a></nav>
+    <nav aria-label="${lang === "pt" ? "Navegação mobile" : "Mobile navigation"}">${nav[lang].map(([text, href]) => `<a href="${href}">${escapeHtml(text)}</a>`).join("")}<a href="${routes[lang].companyPolicy}">${l.policy}</a></nav>
     <a class="btn" href="${routes[lang].contact}">${l.check}</a>
     <a class="language-link" href="${alternateRoute[currentRoute] || routes[lang === "en" ? "pt" : "en"].home}" hreflang="${lang === "en" ? "pt-BR" : "en"}">${l.otherLang}</a>
   </div>
@@ -243,9 +259,9 @@ function footer(lang) {
     <p class="eyebrow">${l.ready}</p>
     <a class="footer-headline" href="${r.contact}">${l.footerHeadline}</a>
     <div class="footer-grid">
-      <div>${logoMarkup()}<p>${escapeHtml(siteConfig.location)}</p></div>
-      <nav aria-label="Footer navigation">
-        <a href="${r.home}">Home</a>
+      <div>${logoMarkup()}<p>${escapeHtml(locationLabel(lang))}</p></div>
+      <nav aria-label="${lang === "pt" ? "Navegação do rodapé" : "Footer navigation"}">
+        <a href="${r.home}">${l.breadcrumbHome}</a>
         <a href="${r.lodge}">${l.lodge}</a>
         <a href="${r.experiences}">${l.experiences}</a>
         <a href="${r.gallery}">${l.gallery}</a>
@@ -262,12 +278,12 @@ function footer(lang) {
     <p class="copyright">© ${new Date().getFullYear()} ${siteConfig.name}</p>
   </div>
 </footer>
-<a class="whatsapp-float" href="${whatsappUrl(lang)}" aria-label="Open WhatsApp conversation"><img src="/assets/icons/whatsapp.svg" alt="" aria-hidden="true"><span class="sr-only">WhatsApp</span></a>`;
+<a class="whatsapp-float" href="${whatsappUrl(lang)}" aria-label="${lang === "pt" ? "Abrir conversa no WhatsApp" : "Open WhatsApp conversation"}"><img src="/assets/icons/whatsapp.svg" alt="" aria-hidden="true"><span class="sr-only">WhatsApp</span></a>`;
 }
 
 function whatsappUrl(lang, message) {
   const text = message || (lang === "pt"
-    ? "Ola! Gostaria de saber mais sobre uma estadia no Amazon Adventure Lodge."
+    ? "Olá! Gostaria de saber mais sobre uma estadia no Amazon Adventure Lodge."
     : "Hello! I would like to know more about staying at Amazon Adventure Lodge.");
   return `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(text)}`;
 }
@@ -307,9 +323,9 @@ ${jsFiles.map((src) => `<script src="${src}" defer></script>`).join("\n")}
 </html>`;
 }
 
-function hero({ eyebrow, title, copy, image, primary, secondary, compact = false }) {
+function hero({ lang = "en", eyebrow, title, copy, image, primary, secondary, compact = false }) {
   return `<section class="hero${compact ? " hero-compact" : ""}">
-  <img class="hero-img" src="${image.src}" alt="${image.alt}" fetchpriority="high">
+  <img class="hero-img" src="${image.src}" alt="${escapeHtml(imageAlt(image, lang))}" fetchpriority="high">
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <p class="eyebrow hero-fade">${escapeHtml(eyebrow)}</p>
@@ -321,7 +337,7 @@ function hero({ eyebrow, title, copy, image, primary, secondary, compact = false
 }
 
 function sectionHeader(eyebrow, title, copy = "") {
-  return `<div class="section-header reveal"><p class="eyebrow">${escapeHtml(eyebrow)}</p><h2 class="display split-animate">${escapeHtml(title)}</h2>${copy ? `<p>${escapeHtml(copy)}</p>` : ""}</div>`;
+  return `<div class="section-header reveal">${eyebrow ? `<p class="eyebrow">${escapeHtml(eyebrow)}</p>` : ""}<h2 class="display split-animate">${escapeHtml(title)}</h2>${copy ? `<p>${escapeHtml(copy)}</p>` : ""}</div>`;
 }
 
 function experienceCard(exp, lang, index, stacked = false) {
@@ -338,9 +354,9 @@ function experienceCard(exp, lang, index, stacked = false) {
           <p class="meta">${escapeHtml(duration)} · ${escapeHtml(price)}</p>
         </div>
         <p>${escapeHtml(data.summary)}</p>
-        <a class="text-link" href="${route}">${lang === "pt" ? "Explorar experiencia" : "Explore this experience"}</a>
+        <a class="text-link" href="${route}">${lang === "pt" ? "Explorar experiência" : "Explore this experience"}</a>
       </div>
-      <div class="card-img-wrap"><img class="card-img" src="${exp.image.src}" alt="${exp.image.alt}" loading="lazy"></div>
+      <div class="card-img-wrap"><img class="card-img" src="${exp.image.src}" alt="${escapeHtml(imageAlt(exp.image, lang))}" loading="lazy"></div>
     </div>
   </article>`;
 }
@@ -348,25 +364,26 @@ function experienceCard(exp, lang, index, stacked = false) {
 function homePage(lang) {
   const r = routes[lang];
   const copy = lang === "pt"
-    ? "Natureza, aventura e hospitalidade amazonica autentica."
+    ? "Natureza, aventura e hospitalidade amazônica autêntica."
     : "Nature, adventure and authentic Amazon hospitality.";
   const intro = lang === "pt"
-    ? "Amazon Adventure Lodge e um retiro autentico as margens do Lago do Macarico, inspirado pela arquitetura tradicional das comunidades ribeirinhas da Amazonia e concebido para conectar hospedes a floresta, biodiversidade, cultura e modo de vida local."
+    ? "Amazon Adventure Lodge é um retiro autêntico às margens do Lago do Maçarico, inspirado pela arquitetura tradicional das comunidades ribeirinhas da Amazônia e concebido para conectar hóspedes à floresta, à biodiversidade, à cultura e ao modo de vida local."
     : "Amazon Adventure Lodge is an authentic retreat on the shores of Lago do Macarico, inspired by traditional Amazon riverside architecture and designed to connect guests with the forest, biodiversity, culture and local ways of life.";
   const body = `${hero({
-    eyebrow: "LAGO DO MACARICO · AMAZONAS · BRAZIL",
-    title: lang === "pt" ? "ENTRE NA\nAMAZONIA" : "DEEP INTO\nTHE AMAZON",
+    lang,
+    eyebrow: lang === "pt" ? "LAGO DO MAÇARICO · AMAZONAS · BRASIL" : "LAGO DO MACARICO · AMAZONAS · BRAZIL",
+    title: lang === "pt" ? "ENTRE NA\nAMAZÔNIA" : "DEEP INTO\nTHE AMAZON",
     copy,
     image: images.hero,
     primary: `<a class="btn" href="${r.experiences}">${labels[lang].explore}</a>`,
     secondary: `<a class="btn btn-ghost" href="${r.contact}">${labels[lang].plan}</a>`,
   })}
   <section class="intro-section">
-    <div><h2 class="display split-animate">${lang === "pt" ? "Um retiro autentico no coracao da Amazonia." : "An authentic retreat in the heart of the Amazon."}</h2></div>
-    <div><p class="lead split-animate">${escapeHtml(intro)}</p><dl class="fact-row"><div><dt>Lago</dt><dd>Macarico</dd></div><div><dt>Base</dt><dd>Manaus</dd></div></dl></div>
+    <div><h2 class="display split-animate">${lang === "pt" ? "Um retiro autêntico no coração da Amazônia." : "An authentic retreat in the heart of the Amazon."}</h2></div>
+    <div><p class="lead split-animate">${escapeHtml(intro)}</p><dl class="fact-row"><div><dt>Lago</dt><dd>${lang === "pt" ? "Maçarico" : "Macarico"}</dd></div><div><dt>Base</dt><dd>Manaus</dd></div></dl></div>
   </section>
   <section class="stack-section">
-    ${sectionHeader(lang === "pt" ? "Experiencias" : "Experiences", lang === "pt" ? "PACOTES AMAZONICOS" : "AMAZON JOURNEYS", lang === "pt" ? "Grandes cards editoriais para comparar duracao, ritmo e foco." : "Editorial cards for comparing duration, pace and focus.")}
+    ${sectionHeader(lang === "pt" ? "Experiências" : "Experiences", lang === "pt" ? "PACOTES AMAZÔNICOS" : "AMAZON JOURNEYS", lang === "pt" ? "Cards editoriais para comparar duração, ritmo e foco." : "Editorial cards for comparing duration, pace and focus.")}
     <div class="stack-container">${experiences.map((exp, index) => experienceCard(exp, lang, index, true)).join("")}</div>
   </section>
   <section class="value-section">
@@ -374,15 +391,15 @@ function homePage(lang) {
     <div class="pillar-grid">${pillars[lang].map(([title, text]) => `<article class="pillar reveal"><h3>${escapeHtml(title)}</h3><p>${escapeHtml(text)}</p></article>`).join("")}</div>
   </section>
   <section class="activity-section">
-    <img src="${images.sunset.src}" alt="${images.sunset.alt}" loading="lazy">
-    <div>${sectionHeader(lang === "pt" ? "Atividades" : "Activities", lang === "pt" ? "IMERSAO EM RITMO NATURAL" : "IMMERSION AT A NATURAL PACE", lang === "pt" ? "A fauna e a floresta sao observadas com respeito, sempre dependendo de clima, nivel da agua e condicoes do dia." : "Wildlife and forest encounters are approached respectfully, always depending on weather, water levels and the conditions of the day.")}
+    <img src="${images.sunset.src}" alt="${escapeHtml(imageAlt(images.sunset, lang))}" loading="lazy">
+    <div>${sectionHeader(lang === "pt" ? "Atividades" : "Activities", lang === "pt" ? "IMERSÃO EM RITMO NATURAL" : "IMMERSION AT A NATURAL PACE", lang === "pt" ? "A fauna e a floresta são observadas com respeito, sempre dependendo do clima, do nível da água e das condições do dia." : "Wildlife and forest encounters are approached respectfully, always depending on weather, water levels and the conditions of the day.")}
     <ul class="activity-cloud">${activities[lang].map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></div>
   </section>`;
   return layout({
     lang,
     route: r.home,
-    title: `${siteConfig.name} | ${lang === "pt" ? "Lodge e experiencias na Amazonia" : "Amazon Rainforest Lodge from Manaus"}`,
-    description: lang === "pt" ? "Lodge amazonico no Lago do Macarico com experiencias de floresta, canoa, sobrevivencia e pesca esportiva." : "Amazon rainforest lodge at Lago do Macarico with jungle tours, canoe exploration, survival tours and sport fishing from Manaus.",
+    title: `${siteConfig.name} | ${lang === "pt" ? "Pousada e experiências na Amazônia" : "Amazon Rainforest Lodge from Manaus"}`,
+    description: lang === "pt" ? "Pousada amazônica no Lago do Maçarico com experiências de floresta, canoa, sobrevivência e pesca esportiva." : "Amazon rainforest lodge at Lago do Macarico with jungle tours, canoe exploration, survival tours and sport fishing from Manaus.",
     body,
     jsonLd: baseJsonLd(lang, r.home),
   });
@@ -391,50 +408,52 @@ function homePage(lang) {
 function lodgePage(lang) {
   const r = routes[lang];
   const journey = lang === "pt"
-    ? ["Manaus", "Porto da Ceasa", "Encontro das Aguas", "Regiao do Careiro", "Lago do Macarico", "Amazon Adventure Lodge"]
+    ? ["Manaus", "Porto da Ceasa", "Encontro das Águas", "Região do Careiro", "Lago do Maçarico", "Amazon Adventure Lodge"]
     : ["Manaus", "Ceasa Port", "Meeting of the Waters", "Careiro area", "Lago do Macarico", "Amazon Adventure Lodge"];
   const body = `${hero({
-    eyebrow: siteConfig.location,
-    title: lang === "pt" ? "O LODGE\nNA FLORESTA" : "THE LODGE\nIN THE FOREST",
-    copy: lang === "pt" ? "Arquitetura simples, hospitalidade regional e acesso direto a natureza." : "Simple architecture, regional hospitality and direct access to nature.",
+    lang,
+    eyebrow: locationLabel(lang),
+    title: lang === "pt" ? "A POUSADA\nNA FLORESTA" : "THE LODGE\nIN THE FOREST",
+    copy: lang === "pt" ? "Arquitetura simples, hospitalidade regional e acesso direto à natureza." : "Simple architecture, regional hospitality and direct access to nature.",
     image: images.lodge,
     primary: `<a class="btn" href="${r.contact}">${labels[lang].check}</a>`,
     compact: true,
   })}
   <section class="split-section">
-    ${sectionHeader(lang === "pt" ? "Amazon Adventure Lodge" : "Amazon Adventure Lodge", lang === "pt" ? "CONFORTO SEM OSTENTACAO" : "COMFORT WITHOUT OSTENTATION")}
+    ${sectionHeader(lang === "pt" ? "Amazon Adventure Lodge" : "Amazon Adventure Lodge", lang === "pt" ? "CONFORTO SEM OSTENTAÇÃO" : "COMFORT WITHOUT OSTENTATION")}
     <div class="split-copy">
-      <p>${lang === "pt" ? "O lodge fica no Lago do Macarico e usa uma linguagem inspirada nas comunidades ribeirinhas: madeira, passarelas, chales privativos, refeicoes regionais e convivencia proxima com a floresta." : "The lodge sits at Lago do Macarico and follows a language inspired by riverside communities: timber, boardwalks, private chalets, regional meals and close contact with the forest."}</p>
-      <p>${lang === "pt" ? "A chegada a partir de Manaus faz parte da experiencia, conectando agua, estrada, floresta e modos de vida locais sem inventar distancias ou promessas artificiais." : "The journey from Manaus is part of the experience, connecting water, road, forest and local ways of life without invented distances or artificial promises."}</p>
+      <p>${lang === "pt" ? "A pousada fica no Lago do Maçarico e usa uma linguagem inspirada nas comunidades ribeirinhas: madeira, passarelas, chalés privativos, refeições regionais e convivência próxima com a floresta." : "The lodge sits at Lago do Macarico and follows a language inspired by riverside communities: timber, boardwalks, private chalets, regional meals and close contact with the forest."}</p>
+      <p>${lang === "pt" ? "A chegada a partir de Manaus faz parte da experiência, conectando água, estrada, floresta e modos de vida locais sem inventar distâncias ou promessas artificiais." : "The journey from Manaus is part of the experience, connecting water, road, forest and local ways of life without invented distances or artificial promises."}</p>
     </div>
   </section>
   <section class="image-text-section">
-    <img src="${images.room.src}" alt="${images.room.alt}" loading="lazy">
-    <div><h2 class="display">${lang === "pt" ? "Chales privativos e refeicoes regionais." : "Private chalets and regional meals."}</h2><p>${lang === "pt" ? "A proposta e oferecer uma base confortavel para dias de trilhas, canoas, amanheceres, noites na floresta e descanso simples depois das atividades." : "The idea is to offer a comfortable base for days of trails, canoes, sunrise outings, forest nights and simple rest after activities."}</p></div>
+    <img src="${images.room.src}" alt="${escapeHtml(imageAlt(images.room, lang))}" loading="lazy">
+    <div><h2 class="display">${lang === "pt" ? "Chalés privativos e refeições regionais." : "Private chalets and regional meals."}</h2><p>${lang === "pt" ? "A proposta é oferecer uma base confortável para dias de trilhas, canoas, amanheceres, noites na floresta e descanso simples depois das atividades." : "The idea is to offer a comfortable base for days of trails, canoes, sunrise outings, forest nights and simple rest after activities."}</p></div>
   </section>
   <section class="journey-section">
     ${sectionHeader(lang === "pt" ? "Rota" : "Route", lang === "pt" ? "SUA JORNADA DESDE MANAUS" : "YOUR JOURNEY FROM MANAUS")}
     <ol class="journey-list">${journey.map((step) => `<li>${escapeHtml(step)}</li>`).join("")}</ol>
   </section>`;
-  return layout({ lang, route: r.lodge, title: `${labels[lang].lodge} | ${siteConfig.name}`, description: lang === "pt" ? "Conheca o Amazon Adventure Lodge no Lago do Macarico, com chales privativos, refeicoes regionais e acesso desde Manaus." : "Discover Amazon Adventure Lodge at Lago do Macarico, with private chalets, regional meals and access from Manaus.", body, image: images.lodge.src, jsonLd: breadcrumbJsonLd(lang, r.lodge, labels[lang].lodge) });
+  return layout({ lang, route: r.lodge, title: `${labels[lang].lodge} | ${siteConfig.name}`, description: lang === "pt" ? "Conheça o Amazon Adventure Lodge no Lago do Maçarico, com chalés privativos, refeições regionais e acesso desde Manaus." : "Discover Amazon Adventure Lodge at Lago do Macarico, with private chalets, regional meals and access from Manaus.", body, image: images.lodge.src, jsonLd: breadcrumbJsonLd(lang, r.lodge, labels[lang].lodge) });
 }
 
 function experiencesPage(lang) {
   const r = routes[lang];
   const body = `${hero({
+    lang,
     eyebrow: lang === "pt" ? "Pacotes" : "Packages",
     title: lang === "pt" ? "ESCOLHA\nSEU RITMO" : "CHOOSE\nYOUR PACE",
-    copy: lang === "pt" ? "Da primeira noite na floresta a expedicoes, sobrevivencia e pesca esportiva." : "From a first forest overnight to expeditions, survival and sport fishing.",
+    copy: lang === "pt" ? "Da primeira noite na floresta a expedições, sobrevivência e pesca esportiva." : "From a first forest overnight to expeditions, survival and sport fishing.",
     image: images.canoe,
     primary: `<a class="btn" href="${r.contact}">${labels[lang].check}</a>`,
     compact: true,
   })}
   <section class="listing-section">
-    ${sectionHeader(lang === "pt" ? "Experiencias" : "Experiences", lang === "pt" ? "TODOS OS PACOTES" : "ALL PACKAGES", lang === "pt" ? "Filtros simples para comparar estadias curtas, imersao, sobrevivencia e pesca." : "Simple filters for comparing short stays, jungle immersion, survival and fishing.")}
-    <div class="filter-bar" role="list" aria-label="Experience filters">${labels[lang].categories.map((cat, index) => `<button type="button" class="filter-btn${index === 0 ? " is-active" : ""}" data-filter="${cat === "Todos" ? "All" : cat}">${escapeHtml(cat)}</button>`).join("")}</div>
+    ${sectionHeader(lang === "pt" ? "Experiências" : "Experiences", lang === "pt" ? "TODOS OS PACOTES" : "ALL PACKAGES", lang === "pt" ? "Filtros simples para comparar estadias curtas, imersão, sobrevivência e pesca." : "Simple filters for comparing short stays, jungle immersion, survival and fishing.")}
+    <div class="filter-bar" role="list" aria-label="${lang === "pt" ? "Filtros de experiências" : "Experience filters"}">${labels[lang].categories.map(([label, value], index) => `<button type="button" class="filter-btn${index === 0 ? " is-active" : ""}" data-filter="${escapeHtml(value)}">${escapeHtml(label)}</button>`).join("")}</div>
     <div class="experience-grid">${experiences.map((exp, index) => experienceCard(exp, lang, index)).join("")}</div>
   </section>`;
-  return layout({ lang, route: r.experiences, title: `${labels[lang].experiences} | ${siteConfig.name}`, description: lang === "pt" ? "Compare pacotes Amazon Adventure Lodge: 2, 3, 4 e 5 dias, survival tours e pesca esportiva." : "Compare Amazon Adventure Lodge packages: 2, 3, 4 and 5 days, survival tours and sport fishing.", body, image: images.canoe.src, jsonLd: breadcrumbJsonLd(lang, r.experiences, labels[lang].experiences) });
+  return layout({ lang, route: r.experiences, title: `${labels[lang].experiences} | ${siteConfig.name}`, description: lang === "pt" ? "Compare pacotes do Amazon Adventure Lodge: 2, 3, 4 e 5 dias, sobrevivência e pesca esportiva." : "Compare Amazon Adventure Lodge packages: 2, 3, 4 and 5 days, survival tours and sport fishing.", body, image: images.canoe.src, jsonLd: breadcrumbJsonLd(lang, r.experiences, labels[lang].experiences) });
 }
 
 function experiencePage(exp, lang) {
@@ -446,6 +465,7 @@ function experiencePage(exp, lang) {
   const l = labels[lang];
   const related = experiences.filter((item) => item.key !== exp.key).slice(0, 3);
   const body = `${hero({
+    lang,
     eyebrow: `${duration} · ${price}`,
     title: data.shortTitle.toUpperCase(),
     copy: data.summary,
@@ -470,8 +490,8 @@ function experiencePage(exp, lang) {
       <p>${escapeHtml(data.practical)}</p>
     </article>
   </section>
-  <section class="mini-gallery">${[exp.image, images.lodge, images.sunset, images.wildlife].map((img) => `<button class="lightbox-trigger" type="button" data-full="${img.src}" aria-label="${escapeHtml(img.alt)}"><img src="${img.src}" alt="${img.alt}" loading="lazy"></button>`).join("")}</section>
-  <section class="booking-cta"><h2 class="display">${lang === "pt" ? "Converse com a equipe antes de reservar." : "Talk with the team before booking."}</h2><p>${lang === "pt" ? "Sem checkout inventado: a disponibilidade e confirmada por WhatsApp ou e-mail." : "No invented checkout: availability is confirmed by WhatsApp or email."}</p><a class="btn" href="${r.contact}">${l.check}</a></section>
+  <section class="mini-gallery">${[exp.image, images.lodge, images.sunset, images.wildlife].map((img) => `<button class="lightbox-trigger" type="button" data-full="${img.src}" aria-label="${escapeHtml(imageAlt(img, lang))}"><img src="${img.src}" alt="${escapeHtml(imageAlt(img, lang))}" loading="lazy"></button>`).join("")}</section>
+  <section class="booking-cta"><h2 class="display">${lang === "pt" ? "Converse com a equipe antes de reservar." : "Talk with the team before booking."}</h2><p>${lang === "pt" ? "Sem checkout inventado: a disponibilidade é confirmada por WhatsApp ou e-mail." : "No invented checkout: availability is confirmed by WhatsApp or email."}</p><a class="btn" href="${r.contact}">${l.check}</a></section>
   <section class="related-section">${sectionHeader("", l.related)}<div class="related-grid">${related.map((item, index) => experienceCard(item, lang, index)).join("")}</div></section>`;
   return layout({ lang, route, title: `${data.title} | ${siteConfig.name}`, description: data.summary, body, image: exp.image.src, jsonLd: breadcrumbJsonLd(lang, route, data.title) });
 }
@@ -479,49 +499,51 @@ function experiencePage(exp, lang) {
 function galleryPage(lang) {
   const r = routes[lang];
   const body = `${hero({
+    lang,
     eyebrow: labels[lang].gallery,
     title: lang === "pt" ? "GALERIA\nEDITORIAL" : "EDITORIAL\nGALLERY",
-    copy: lang === "pt" ? "Imagens provisoriais geradas para o mockup, prontas para troca pelo pacote oficial do cliente." : "Temporary generated images for the mockup, ready to be replaced by the client's official photo package.",
+    copy: lang === "pt" ? "Imagens provisórias geradas para o mockup, prontas para troca pelo pacote oficial do cliente." : "Temporary generated images for the mockup, ready to be replaced by the client's official photo package.",
     image: images.sunset,
     compact: true,
   })}
   <section class="gallery-section">
-    ${sectionHeader(lang === "pt" ? "Categorias" : "Categories", lang === "pt" ? "LODGE, AGUA, FLORESTA E EXPEDICOES" : "LODGE, WATER, FOREST AND EXPEDITIONS")}
-    <div class="masonry-grid">${gallery.map((item) => `<button class="gallery-tile lightbox-trigger" type="button" data-full="${item.image.src}" aria-label="${escapeHtml(item.image.alt)}"><img src="${item.image.src}" alt="${item.image.alt}" loading="lazy"><span>${escapeHtml(item.category)}</span></button>`).join("")}</div>
+    ${sectionHeader(lang === "pt" ? "Categorias" : "Categories", lang === "pt" ? "POUSADA, ÁGUA, FLORESTA E EXPEDIÇÕES" : "LODGE, WATER, FOREST AND EXPEDITIONS")}
+    <div class="masonry-grid">${gallery.map((item) => `<button class="gallery-tile lightbox-trigger" type="button" data-full="${item.image.src}" aria-label="${escapeHtml(imageAlt(item.image, lang))}"><img src="${item.image.src}" alt="${escapeHtml(imageAlt(item.image, lang))}" loading="lazy"><span>${escapeHtml(lang === "pt" ? item.categoryPt : item.category)}</span></button>`).join("")}</div>
   </section>`;
-  return layout({ lang, route: r.gallery, title: `${labels[lang].gallery} | ${siteConfig.name}`, description: lang === "pt" ? "Galeria editorial provisoria do Amazon Adventure Lodge com lodge, floresta, agua, fauna e pesca." : "Temporary editorial gallery for Amazon Adventure Lodge with lodge, forest, water, wildlife and fishing.", body, image: images.sunset.src, jsonLd: breadcrumbJsonLd(lang, r.gallery, labels[lang].gallery) });
+  return layout({ lang, route: r.gallery, title: `${labels[lang].gallery} | ${siteConfig.name}`, description: lang === "pt" ? "Galeria editorial provisória do Amazon Adventure Lodge com pousada, floresta, água, fauna e pesca." : "Temporary editorial gallery for Amazon Adventure Lodge with lodge, forest, water, wildlife and fishing.", body, image: images.sunset.src, jsonLd: breadcrumbJsonLd(lang, r.gallery, labels[lang].gallery) });
 }
 
 function contactPage(lang) {
   const r = routes[lang];
   const body = `${hero({
+    lang,
     eyebrow: labels[lang].contact,
     title: lang === "pt" ? "PLANEJE\nSUA ESTADIA" : "PLAN\nYOUR STAY",
-    copy: lang === "pt" ? "Fale com a equipe para consultar disponibilidade, detalhes e moedas." : "Talk with the team to check availability, details and currency options.",
+    copy: lang === "pt" ? "Fale com a equipe para consultar disponibilidade, detalhes e opções de moeda." : "Talk with the team to check availability, details and currency options.",
     image: images.lodge,
     primary: `<a class="btn" href="${whatsappUrl(lang)}">WhatsApp</a>`,
-    secondary: `<a class="btn btn-ghost" href="mailto:${siteConfig.email}">Email</a>`,
+    secondary: `<a class="btn btn-ghost" href="mailto:${siteConfig.email}">${lang === "pt" ? "E-mail" : "Email"}</a>`,
     compact: true,
   })}
   <section class="contact-section">
     <div class="contact-info reveal">
       <h2 class="display">${labels[lang].check}</h2>
       <p>WhatsApp: <a href="${whatsappUrl(lang)}">${siteConfig.whatsappDisplay}</a></p>
-      <p>Email: <a href="mailto:${siteConfig.email}">${siteConfig.email}</a></p>
+      <p>${lang === "pt" ? "E-mail" : "Email"}: <a href="mailto:${siteConfig.email}">${siteConfig.email}</a></p>
       <p>${lang === "pt" ? "Suporte" : "Support"}: ${siteConfig.support}</p>
-      <p>${lang === "pt" ? "Valores canonicos em BRL. Para outras moedas, consulte a equipe." : "Canonical prices are in BRL. For other currencies, contact the team."}</p>
+      <p>${lang === "pt" ? "Valores referenciais em BRL. Para outras moedas, consulte a equipe." : "Canonical prices are in BRL. For other currencies, contact the team."}</p>
     </div>
-    <form class="contact-form" data-contact-form novalidate>
+    <form class="contact-form" data-contact-form data-lang="${lang}" novalidate>
       <h2>${labels[lang].formTitle}</h2>
       ${field("name", lang === "pt" ? "Nome" : "Name", "text", true)}
-      ${field("email", "Email", "email", true)}
+      ${field("email", lang === "pt" ? "E-mail" : "Email", "email", true)}
       ${field("phone", lang === "pt" ? "WhatsApp / Telefone" : "WhatsApp / Phone", "tel", true)}
-      ${field("country", lang === "pt" ? "Pais" : "Country", "text", false)}
-      <label>${lang === "pt" ? "Experiencia de interesse" : "Experience of interest"}<select name="experience">${experiences.map((exp) => `<option>${escapeHtml(exp[lang].title)}</option>`).join("")}</select></label>
+      ${field("country", lang === "pt" ? "País" : "Country", "text", false)}
+      <label>${lang === "pt" ? "Experiência de interesse" : "Experience of interest"}<select name="experience">${experiences.map((exp) => `<option>${escapeHtml(exp[lang].title)}</option>`).join("")}</select></label>
       ${field("arrival", lang === "pt" ? "Data preferida de chegada" : "Preferred arrival date", "date", false)}
-      ${field("guests", lang === "pt" ? "Numero de hospedes" : "Number of guests", "number", false, "1")}
+      ${field("guests", lang === "pt" ? "Número de hóspedes" : "Number of guests", "number", false, "1")}
       <label>${lang === "pt" ? "Mensagem" : "Message"}<textarea name="message" rows="5"></textarea></label>
-      <p class="form-note">${lang === "pt" ? "Sem backend configurado: o formulario prepara uma mensagem segura para WhatsApp ou e-mail, sem simular confirmacao." : "No backend is configured: this form prepares a safe WhatsApp or email message without simulating confirmation."}</p>
+      <p class="form-note">${lang === "pt" ? "Sem backend configurado: o formulário prepara uma mensagem segura para WhatsApp ou e-mail, sem simular confirmação." : "No backend is configured: this form prepares a safe WhatsApp or email message without simulating confirmation."}</p>
       <button class="btn" type="submit" data-submit-label="${labels[lang].submit}">${labels[lang].submit}</button>
       <output class="form-status" role="status"></output>
     </form>
@@ -536,14 +558,15 @@ function field(name, label, type, required, min = "") {
 function policyPage(lang) {
   const r = routes[lang];
   const body = `${hero({
+    lang,
     eyebrow: labels[lang].policy,
     title: lang === "pt" ? "TERMOS\nDE RESERVA" : "BOOKING\nTERMS",
-    copy: lang === "pt" ? "Politicas de reserva, pagamento, cancelamento, seguranca e preservacao." : "Reservation, payment, cancellation, safety and preservation policies.",
+    copy: lang === "pt" ? "Políticas de reserva, pagamento, cancelamento, segurança e preservação." : "Reservation, payment, cancellation, safety and preservation policies.",
     image: images.trek,
     compact: true,
   })}
   <section class="policy-section">${policy[lang].map(([title, text]) => `<article class="policy-block reveal"><h2>${escapeHtml(title)}</h2><p>${escapeHtml(text)}</p></article>`).join("")}</section>`;
-  return layout({ lang, route: r.companyPolicy, title: `${labels[lang].policy} | ${siteConfig.name}`, description: lang === "pt" ? "Politicas de reserva, pagamento, cancelamento, protecao ambiental e seguranca do Amazon Adventure Lodge." : "Amazon Adventure Lodge reservation, payment, cancellation, environmental protection and safety policies.", body, image: images.trek.src, jsonLd: breadcrumbJsonLd(lang, r.companyPolicy, labels[lang].policy) });
+  return layout({ lang, route: r.companyPolicy, title: `${labels[lang].policy} | ${siteConfig.name}`, description: lang === "pt" ? "Políticas de reserva, pagamento, cancelamento, proteção ambiental e segurança do Amazon Adventure Lodge." : "Amazon Adventure Lodge reservation, payment, cancellation, environmental protection and safety policies.", body, image: images.trek.src, jsonLd: breadcrumbJsonLd(lang, r.companyPolicy, labels[lang].policy) });
 }
 
 function baseJsonLd(lang, route) {
@@ -589,7 +612,10 @@ function breadcrumbJsonLd(lang, route, name) {
 }
 
 function redirectPage(from, to) {
-  return `<!DOCTYPE html><html lang="${langOf(to)}"><head><meta charset="utf-8"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=${to}"><link rel="canonical" href="${siteConfig.canonicalBase}${to}"><title>Redirecting | ${siteConfig.name}</title></head><body><p>Redirecting to <a href="${to}">${to}</a>.</p><script>location.replace(${JSON.stringify(to)});</script></body></html>`;
+  const lang = langOf(to);
+  const title = lang === "pt" ? "Redirecionando" : "Redirecting";
+  const copy = lang === "pt" ? "Redirecionando para" : "Redirecting to";
+  return `<!DOCTYPE html><html lang="${labels[lang].lang}"><head><meta charset="utf-8"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=${to}"><link rel="canonical" href="${siteConfig.canonicalBase}${to}"><title>${title} | ${siteConfig.name}</title></head><body><p>${copy} <a href="${to}">${to}</a>.</p><script>location.replace(${JSON.stringify(to)});</script></body></html>`;
 }
 
 function sitemap() {
