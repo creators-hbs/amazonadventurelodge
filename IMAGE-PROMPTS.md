@@ -2,7 +2,7 @@
 
 ## hero-amazon-lodge.jpg
 
-Cinematic wide-angle documentary photograph of a remote Amazon rainforest lodge experience at Lago do Macarico, Brazilian Amazon, calm dark water in foreground, dense tropical rainforest, small traditional boat moving through the water at golden sunrise, atmospheric mist, subtle warm light, authentic wilderness, sophisticated travel editorial photography, realistic vegetation, natural colors, high detail, no text, no logos, no fantasy architecture, no exaggerated luxury, 16:9.
+Cinematic wide-angle documentary photograph of a remote Amazon rainforest lodge experience at Lago do Maçarico, Brazilian Amazon, calm dark water in foreground, dense tropical rainforest, small traditional boat moving through the water at golden sunrise, atmospheric mist, subtle warm light, authentic wilderness, sophisticated travel editorial photography, realistic vegetation, natural colors, high detail, no text, no logos, no fantasy architecture, no exaggerated luxury, 16:9.
 
 ## lodge-exterior.jpg
 
@@ -18,7 +18,7 @@ Small group of adult travelers with local guide exploring narrow Amazon flooded 
 
 ## amazon-sunset.jpg
 
-Wide cinematic Amazon sunset over Lago do Macarico, golden orange light reflecting over calm water, silhouettes of dense rainforest at the horizon, small canoe in distance, serene premium travel editorial photography, realistic.
+Wide cinematic Amazon sunset over Lago do Maçarico, golden orange light reflecting over calm water, silhouettes of dense rainforest at the horizon, small canoe in distance, serene premium travel editorial photography, realistic.
 
 ## jungle-trek.jpg
 

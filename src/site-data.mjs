@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "Amazon Adventure Lodge",
-  location: "Lago do Macarico, Amazonas, Brazil",
+  location: "Lago do Maçarico, Amazonas, Brazil",
   locationPt: "Lago do Maçarico, Amazonas, Brasil",
   logoPath: "/assets/brand/logo_transp_amazon_adv.png",
   whatsappDisplay: "+55 92 8437-8024",
@@ -149,7 +149,7 @@ export const experiences = [
         "Opportunity to observe dolphins and birds",
       ],
       itinerary: [
-        ["Day 1", "Depart Manaus around 08:00, continue through Ceasa Port, the Meeting of the Waters, land transfer and Lago do Macarico before arriving at the lodge around 11:30. After lunch, explore by canoe with opportunities for birds and dolphins depending on conditions, watch sunset, have dinner and join a night caiman observation outing."],
+        ["Day 1", "Depart Manaus around 08:00, continue through Ceasa Port, the Meeting of the Waters, land transfer and Lago do Maçarico before arriving at the lodge around 11:30. After lunch, explore by canoe with opportunities for birds and dolphins depending on conditions, watch sunset, have dinner and join a night caiman observation outing."],
         ["Day 2", "Leave by canoe around 05:30 for sunrise, return for breakfast, then follow a guided forest trail focused on medicinal plants, survival techniques, trees, insects and wildlife interpretation. After lunch, return toward Manaus around 13:30 with arrival expected late afternoon."],
       ],
       practical: "Designed for travelers with limited time who still want a real lodge-based Amazon experience.",
@@ -225,10 +225,10 @@ export const experiences = [
       "/produto/4-day-lake-macarico-amazon-tour/",
     ],
     en: {
-      title: "4-Day Lake Macarico Amazon Tour",
-      shortTitle: "Lake Macarico Amazon Tour",
+      title: "4-Day Lago Maçarico Amazon Tour",
+      shortTitle: "Lago Maçarico Amazon Tour",
       summary:
-        "A deeper Lake Macarico itinerary adding forest camping, practical survival interpretation and seasonal activities shaped by weather and water levels.",
+        "A deeper Lago Maçarico itinerary adding forest camping, practical survival interpretation and seasonal activities shaped by weather and water levels.",
       highlights: ["Forest camping", "Survival interpretation", "Riverside culture", "Traditional night fishing when conditions allow", "Seasonal Amazon activities"],
       itinerary: [
         ["Days 1-2", "Follow the core lodge, canoe, sunrise, sunset, trail and riverside cultural experiences from the shorter programs."],
@@ -346,8 +346,8 @@ export const experiences = [
       title: "Amazon Sport Fishing Lodge",
       shortTitle: "Sport Fishing Lodge",
       summary:
-        "Sport fishing based around Lago do Macarico, Juma River and Mamori Channel with local guides, catch-and-release context and no promise of guaranteed species or catch rates.",
-      highlights: ["Lago do Macarico", "Juma River", "Mamori Channel", "Peacock Bass / Tucunare-Acu", "Catch-and-release context"],
+        "Sport fishing based around Lago do Maçarico, Juma River and Mamori Channel with local guides, catch-and-release context and no promise of guaranteed species or catch rates.",
+      highlights: ["Lago do Maçarico", "Juma River", "Mamori Channel", "Peacock Bass / Tucunare-Acu", "Catch-and-release context"],
       itinerary: [
         ["05:30", "Breakfast"],
         ["06:00", "Morning fishing"],
@@ -469,11 +469,11 @@ export const policy = {
 };
 
 export const imagePrompts = [
-  ["hero-amazon-lodge.jpg", "Cinematic wide-angle documentary photograph of a remote Amazon rainforest lodge experience at Lago do Macarico, Brazilian Amazon, calm dark water in foreground, dense tropical rainforest, small traditional boat moving through the water at golden sunrise, atmospheric mist, subtle warm light, authentic wilderness, sophisticated travel editorial photography, realistic vegetation, natural colors, high detail, no text, no logos, no fantasy architecture, no exaggerated luxury, 16:9."],
+  ["hero-amazon-lodge.jpg", "Cinematic wide-angle documentary photograph of a remote Amazon rainforest lodge experience at Lago do Maçarico, Brazilian Amazon, calm dark water in foreground, dense tropical rainforest, small traditional boat moving through the water at golden sunrise, atmospheric mist, subtle warm light, authentic wilderness, sophisticated travel editorial photography, realistic vegetation, natural colors, high detail, no text, no logos, no fantasy architecture, no exaggerated luxury, 16:9."],
   ["lodge-exterior.jpg", "Traditional Amazon wooden jungle lodge with elevated wooden chalets and boardwalk surrounded by dense rainforest, rustic Amazon riverside architecture, warm natural timber, simple comfortable design, early morning golden light filtering through tropical trees, authentic Brazilian Amazon atmosphere, premium documentary travel photography, realistic, no branding, no text."],
   ["private-chalet.jpg", "Simple comfortable private wooden jungle chalet interior in the Brazilian Amazon, warm natural timber walls, clean white bedding, neutral linen textiles, subtle handcrafted local materials, cozy but not luxurious, realistic hospitality photography, soft window light, impeccable but authentic room, no text, no logo."],
   ["canoe-experience.jpg", "Small group of adult travelers with local guide exploring narrow Amazon flooded forest waterways by motorized canoe, dense vegetation reflected in dark water, respectful wildlife tourism, life jackets, documentary photography, realistic Brazilian Amazon, natural light, no text."],
-  ["amazon-sunset.jpg", "Wide cinematic Amazon sunset over Lago do Macarico, golden orange light reflecting over calm water, silhouettes of dense rainforest at the horizon, small canoe in distance, serene premium travel editorial photography, realistic."],
+  ["amazon-sunset.jpg", "Wide cinematic Amazon sunset over Lago do Maçarico, golden orange light reflecting over calm water, silhouettes of dense rainforest at the horizon, small canoe in distance, serene premium travel editorial photography, realistic."],
   ["jungle-trek.jpg", "Experienced Amazon local guide leading a small international group along an authentic rainforest trail, dense vegetation, enormous trees, humid tropical atmosphere, respectful documentary tourism, practical outdoor clothes, premium travel photography, natural lighting."],
   ["survival-camp.jpg", "Authentic guided Amazon jungle survival camp at dusk, hammocks with mosquito nets safely installed between trees, small controlled campfire, experienced guide preparing camp, dense rainforest surrounding the scene, documentary adventure photography, responsible atmosphere, realistic."],
   ["sport-fishing-lodge-release.png", "Adult angler sport fishing for Peacock Bass in a pristine Amazon lake, experienced local guide in boat, life jackets, catch-and-release context, dense rainforest around calm water, energetic but realistic outdoor editorial photography, no trophy exaggeration, no text, no logos."],

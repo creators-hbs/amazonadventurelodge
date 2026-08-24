@@ -285,6 +285,33 @@ a, button, input, select, textarea { font: inherit; }
 }
 .filter-btn.is-active, .filter-btn:hover { background: var(--c-dark); color: var(--c-bg); }
 .experience-grid, .related-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); background: transparent; gap: 28px; }
+.experience-card-inner {
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+}
+.experience-card .card-content {
+  min-height: 430px;
+  padding: clamp(30px, 4vw, 52px);
+}
+.experience-card .card-content h3 {
+  max-width: 14ch;
+  font-size: clamp(1.75rem, 2.7vw, 2.75rem);
+  line-height: 1.08;
+  overflow-wrap: anywhere;
+}
+.experience-card .meta {
+  line-height: 1.65;
+}
+.experience-card .card-img-wrap {
+  order: -1;
+  min-height: 0;
+  aspect-ratio: 16 / 10;
+}
+.experience-card .card-img {
+  object-position: center;
+}
+.experience-card[data-category="Survival"] .card-img { object-position: center 58%; }
+.experience-card[data-category="Sport Fishing"] .card-img { object-position: center 52%; }
 .experience-card[hidden] { display: none; }
 
 .detail-layout { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: clamp(34px, 7vw, 110px); }
@@ -429,6 +456,8 @@ a, button, input, select, textarea { font: inherit; }
   .hero-actions { align-items: stretch; flex-direction: column; }
   .card-item { position: relative; top: auto; min-height: auto; }
   .card-inner, .experience-card-inner { grid-template-columns: 1fr; min-height: auto; }
+  .experience-card .card-content { min-height: auto; }
+  .experience-card .card-content h3 { max-width: none; font-size: clamp(1.65rem, 9vw, 2.35rem); }
   .card-img-wrap { order: -1; min-height: 280px; }
   .pillar-grid, .experience-grid, .related-grid, .journey-list, .mini-gallery, .masonry-grid, .check-list, .footer-grid { grid-template-columns: 1fr; }
   .activity-section > img, .image-text-section > img, .gallery-tile:nth-child(3n + 1) { min-height: 340px; }

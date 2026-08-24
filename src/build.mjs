@@ -368,10 +368,10 @@ function homePage(lang) {
     : "Nature, adventure and authentic Amazon hospitality.";
   const intro = lang === "pt"
     ? "Amazon Adventure Lodge é um retiro autêntico às margens do Lago do Maçarico, inspirado pela arquitetura tradicional das comunidades ribeirinhas da Amazônia e concebido para conectar hóspedes à floresta, à biodiversidade, à cultura e ao modo de vida local."
-    : "Amazon Adventure Lodge is an authentic retreat on the shores of Lago do Macarico, inspired by traditional Amazon riverside architecture and designed to connect guests with the forest, biodiversity, culture and local ways of life.";
+    : "Amazon Adventure Lodge is an authentic retreat on the shores of Lago do Maçarico, inspired by traditional Amazon riverside architecture and designed to connect guests with the forest, biodiversity, culture and local ways of life.";
   const body = `${hero({
     lang,
-    eyebrow: lang === "pt" ? "LAGO DO MAÇARICO · AMAZONAS · BRASIL" : "LAGO DO MACARICO · AMAZONAS · BRAZIL",
+    eyebrow: lang === "pt" ? "LAGO DO MAÇARICO · AMAZONAS · BRASIL" : "LAGO DO MAÇARICO · AMAZONAS · BRAZIL",
     title: lang === "pt" ? "ENTRE NA\nAMAZÔNIA" : "DEEP INTO\nTHE AMAZON",
     copy,
     image: images.hero,
@@ -380,7 +380,7 @@ function homePage(lang) {
   })}
   <section class="intro-section">
     <div><h2 class="display split-animate">${lang === "pt" ? "Um retiro autêntico no coração da Amazônia." : "An authentic retreat in the heart of the Amazon."}</h2></div>
-    <div><p class="lead split-animate">${escapeHtml(intro)}</p><dl class="fact-row"><div><dt>Lago</dt><dd>${lang === "pt" ? "Maçarico" : "Macarico"}</dd></div><div><dt>Base</dt><dd>Manaus</dd></div></dl></div>
+    <div><p class="lead split-animate">${escapeHtml(intro)}</p><dl class="fact-row"><div><dt>Lago</dt><dd>Maçarico</dd></div><div><dt>Base</dt><dd>Manaus</dd></div></dl></div>
   </section>
   <section class="stack-section">
     ${sectionHeader(lang === "pt" ? "Experiências" : "Experiences", lang === "pt" ? "PACOTES AMAZÔNICOS" : "AMAZON JOURNEYS", lang === "pt" ? "Cards editoriais para comparar duração, ritmo e foco." : "Editorial cards for comparing duration, pace and focus.")}
@@ -399,7 +399,7 @@ function homePage(lang) {
     lang,
     route: r.home,
     title: `${siteConfig.name} | ${lang === "pt" ? "Pousada e experiências na Amazônia" : "Amazon Rainforest Lodge from Manaus"}`,
-    description: lang === "pt" ? "Pousada amazônica no Lago do Maçarico com experiências de floresta, canoa, sobrevivência e pesca esportiva." : "Amazon rainforest lodge at Lago do Macarico with jungle tours, canoe exploration, survival tours and sport fishing from Manaus.",
+    description: lang === "pt" ? "Pousada amazônica no Lago do Maçarico com experiências de floresta, canoa, sobrevivência e pesca esportiva." : "Amazon rainforest lodge at Lago do Maçarico with jungle tours, canoe exploration, survival tours and sport fishing from Manaus.",
     body,
     jsonLd: baseJsonLd(lang, r.home),
   });
@@ -409,7 +409,7 @@ function lodgePage(lang) {
   const r = routes[lang];
   const journey = lang === "pt"
     ? ["Manaus", "Porto da Ceasa", "Encontro das Águas", "Região do Careiro", "Lago do Maçarico", "Amazon Adventure Lodge"]
-    : ["Manaus", "Ceasa Port", "Meeting of the Waters", "Careiro area", "Lago do Macarico", "Amazon Adventure Lodge"];
+    : ["Manaus", "Ceasa Port", "Meeting of the Waters", "Careiro area", "Lago do Maçarico", "Amazon Adventure Lodge"];
   const body = `${hero({
     lang,
     eyebrow: locationLabel(lang),
@@ -422,7 +422,7 @@ function lodgePage(lang) {
   <section class="split-section">
     ${sectionHeader(lang === "pt" ? "Amazon Adventure Lodge" : "Amazon Adventure Lodge", lang === "pt" ? "CONFORTO SEM OSTENTAÇÃO" : "COMFORT WITHOUT OSTENTATION")}
     <div class="split-copy">
-      <p>${lang === "pt" ? "A pousada fica no Lago do Maçarico e usa uma linguagem inspirada nas comunidades ribeirinhas: madeira, passarelas, chalés privativos, refeições regionais e convivência próxima com a floresta." : "The lodge sits at Lago do Macarico and follows a language inspired by riverside communities: timber, boardwalks, private chalets, regional meals and close contact with the forest."}</p>
+      <p>${lang === "pt" ? "A pousada fica no Lago do Maçarico e usa uma linguagem inspirada nas comunidades ribeirinhas: madeira, passarelas, chalés privativos, refeições regionais e convivência próxima com a floresta." : "The lodge sits at Lago do Maçarico and follows a language inspired by riverside communities: timber, boardwalks, private chalets, regional meals and close contact with the forest."}</p>
       <p>${lang === "pt" ? "A chegada a partir de Manaus faz parte da experiência, conectando água, estrada, floresta e modos de vida locais sem inventar distâncias ou promessas artificiais." : "The journey from Manaus is part of the experience, connecting water, road, forest and local ways of life without invented distances or artificial promises."}</p>
     </div>
   </section>
@@ -434,7 +434,7 @@ function lodgePage(lang) {
     ${sectionHeader(lang === "pt" ? "Rota" : "Route", lang === "pt" ? "SUA JORNADA DESDE MANAUS" : "YOUR JOURNEY FROM MANAUS")}
     <ol class="journey-list">${journey.map((step) => `<li>${escapeHtml(step)}</li>`).join("")}</ol>
   </section>`;
-  return layout({ lang, route: r.lodge, title: `${labels[lang].lodge} | ${siteConfig.name}`, description: lang === "pt" ? "Conheça o Amazon Adventure Lodge no Lago do Maçarico, com chalés privativos, refeições regionais e acesso desde Manaus." : "Discover Amazon Adventure Lodge at Lago do Macarico, with private chalets, regional meals and access from Manaus.", body, image: images.lodge.src, jsonLd: breadcrumbJsonLd(lang, r.lodge, labels[lang].lodge) });
+  return layout({ lang, route: r.lodge, title: `${labels[lang].lodge} | ${siteConfig.name}`, description: lang === "pt" ? "Conheça o Amazon Adventure Lodge no Lago do Maçarico, com chalés privativos, refeições regionais e acesso desde Manaus." : "Discover Amazon Adventure Lodge at Lago do Maçarico, with private chalets, regional meals and access from Manaus.", body, image: images.lodge.src, jsonLd: breadcrumbJsonLd(lang, r.lodge, labels[lang].lodge) });
 }
 
 function experiencesPage(lang) {
@@ -585,7 +585,7 @@ function baseJsonLd(lang, route) {
       name: siteConfig.name,
       address: {
         "@type": "PostalAddress",
-        addressLocality: "Lago do Macarico",
+        addressLocality: "Lago do Maçarico",
         addressRegion: "Amazonas",
         addressCountry: "BR",
       },
