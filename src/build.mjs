@@ -36,7 +36,7 @@ const rootDeployEntries = [
   "politica-da-empresa",
   "sport-fishing",
 ];
-const assetVersion = "20260818-04";
+const assetVersion = "20260826-01";
 const cssFiles = [`/assets/css/core.css?v=${assetVersion}`, `/assets/css/scroll-overrides.css?v=${assetVersion}`];
 const jsFiles = [
   "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js",
@@ -496,6 +496,21 @@ function experiencePage(exp, lang) {
   return layout({ lang, route, title: `${data.title} | ${siteConfig.name}`, description: data.summary, body, image: exp.image.src, jsonLd: breadcrumbJsonLd(lang, route, data.title) });
 }
 
+function galleryTile(item, lang, route) {
+  const label = lang === "pt" ? item.categoryPt : item.category;
+  const coverAlt = imageAlt(item.image, lang);
+  const galleryImages = item.images?.length ? item.images : [];
+  const galleryData = galleryImages.length
+    ? ` data-gallery="${escapeHtml(JSON.stringify(galleryImages.map((img) => ({ src: relativeUrl(route, img.src), alt: imageAlt(img, lang) }))))}"`
+    : ` data-full="${item.image.src}"`;
+  const ariaLabel = galleryImages.length
+    ? lang === "pt"
+      ? `Abrir galeria ${label} com ${galleryImages.length} imagens.`
+      : `Open ${label} gallery with ${galleryImages.length} images.`
+    : coverAlt;
+  return `<button class="gallery-tile lightbox-trigger" type="button"${galleryData} aria-label="${escapeHtml(ariaLabel)}"><img src="${item.image.src}" alt="${escapeHtml(coverAlt)}" loading="lazy"><span>${escapeHtml(label)}</span></button>`;
+}
+
 function galleryPage(lang) {
   const r = routes[lang];
   const body = `${hero({
@@ -507,8 +522,8 @@ function galleryPage(lang) {
     compact: true,
   })}
   <section class="gallery-section">
-    ${sectionHeader(lang === "pt" ? "Categorias" : "Categories", lang === "pt" ? "POUSADA, ÁGUA, FLORESTA E EXPEDIÇÕES" : "LODGE, WATER, FOREST AND EXPEDITIONS")}
-    <div class="masonry-grid">${gallery.map((item) => `<button class="gallery-tile lightbox-trigger" type="button" data-full="${item.image.src}" aria-label="${escapeHtml(imageAlt(item.image, lang))}"><img src="${item.image.src}" alt="${escapeHtml(imageAlt(item.image, lang))}" loading="lazy"><span>${escapeHtml(lang === "pt" ? item.categoryPt : item.category)}</span></button>`).join("")}</div>
+    ${sectionHeader(lang === "pt" ? "Categorias" : "Categories", lang === "pt" ? "POUSADA, CHALÉS, PASSEIOS, ALIMENTAÇÃO E AMAZÔNIA" : "LODGE, CHALETS, TOURS, FOOD AND AMAZON NATURE")}
+    <div class="masonry-grid">${gallery.map((item) => galleryTile(item, lang, r.gallery)).join("")}</div>
   </section>`;
   return layout({ lang, route: r.gallery, title: `${labels[lang].gallery} | ${siteConfig.name}`, description: lang === "pt" ? "Galeria editorial provisória do Amazon Adventure Lodge com pousada, floresta, água, fauna e pesca." : "Temporary editorial gallery for Amazon Adventure Lodge with lodge, forest, water, wildlife and fishing.", body, image: images.sunset.src, jsonLd: breadcrumbJsonLd(lang, r.gallery, labels[lang].gallery) });
 }

@@ -59,6 +59,255 @@ export const images = {
   },
 };
 
+export const chaletGalleryImages = [
+  {
+    src: "/assets/images/chales/chale-01.png",
+    alt: "Wood-lined chalet bathroom with sink, toilet and shower area.",
+    altPt: "Banheiro de chalé com madeira, pia, vaso sanitário e área de banho.",
+  },
+  {
+    src: "/assets/images/chales/chale-02.png",
+    alt: "Chalet bedroom with red bedding, mosquito nets and a forest view.",
+    altPt: "Quarto de chalé com cama vermelha, mosquiteiros e vista para a floresta.",
+  },
+  {
+    src: "/assets/images/chales/chale-03.png",
+    alt: "Rustic chalet bathroom with wooden walls, shower, sink and mirror.",
+    altPt: "Banheiro rústico de chalé com paredes de madeira, chuveiro, pia e espelho.",
+  },
+  {
+    src: "/assets/images/chales/chale-04.png",
+    alt: "Night walkway beside wooden chalets in the Amazon forest.",
+    altPt: "Passarela noturna ao lado dos chalés de madeira na floresta amazônica.",
+  },
+  {
+    src: "/assets/images/chales/chale-05.png",
+    alt: "Wooden chalet room keys held in front of the lake at sunset.",
+    altPt: "Chaves de madeira dos chalés diante do lago ao pôr do sol.",
+  },
+  {
+    src: "/assets/images/chales/chale-06.png",
+    alt: "Wooden chalet entrance with palm-thatched roof and forest surroundings.",
+    altPt: "Entrada de chalé de madeira com cobertura de palha e entorno de floresta.",
+  },
+  {
+    src: "/assets/images/chales/chale-07.png",
+    alt: "Row of wooden Amazon chalets connected by an elevated boardwalk.",
+    altPt: "Fileira de chalés amazônicos de madeira conectados por passarela elevada.",
+  },
+  {
+    src: "/assets/images/chales/chale-08.png",
+    alt: "Chalet bedroom with single and double beds, red bedding and mosquito nets.",
+    altPt: "Quarto de chalé com cama de solteiro e casal, cama vermelha e mosquiteiros.",
+  },
+  {
+    src: "/assets/images/chales/chale-09.png",
+    alt: "Wooden chalet bedroom with double bed, towel arrangement and warm light.",
+    altPt: "Quarto de chalé em madeira com cama de casal, toalha decorada e luz quente.",
+  },
+  {
+    src: "/assets/images/chales/chale-10.png",
+    alt: "Double bed inside a wooden chalet with simple regional decor.",
+    altPt: "Cama de casal em chalé de madeira com decoração regional simples.",
+  },
+  {
+    src: "/assets/images/chales/chale-11.png",
+    alt: "Chalet deck with table and lake view through the trees.",
+    altPt: "Deck do chalé com mesa e vista do lago entre as árvores.",
+  },
+  {
+    src: "/assets/images/chales/chale-12.png",
+    alt: "Wooden chalet walkway at night with warm lodge lighting.",
+    altPt: "Passarela de madeira dos chalés à noite com iluminação acolhedora.",
+  },
+  {
+    src: "/assets/images/chales/chale-13.png",
+    alt: "Raised wooden chalet warmly lit at night among Amazon trees.",
+    altPt: "Chalé elevado de madeira iluminado à noite entre árvores amazônicas.",
+  },
+  {
+    src: "/assets/images/chales/chale-14.png",
+    alt: "Wooden chalet room with bunk beds and neatly folded towels.",
+    altPt: "Quarto de chalé em madeira com beliche e toalhas dobradas.",
+  },
+];
+
+export const passeioGalleryImages = [
+  {
+    src: "/assets/images/passeios/passeio-01.png",
+    alt: "Clear Amazon stream with golden water and forest reflections.",
+    altPt: "Igarapé amazônico de águas claras com reflexos da floresta.",
+  },
+  {
+    src: "/assets/images/passeios/passeio-02.png",
+    alt: "Amazon forest floor with leaves, roots and dense green vegetation.",
+    altPt: "Chão da floresta amazônica com folhas, raízes e vegetação densa.",
+  },
+  {
+    src: "/assets/images/passeios/passeio-03.png",
+    alt: "Guests in a boat after a piranha fishing activity on the lake.",
+    altPt: "Hóspedes em barco após atividade de pesca de piranha no lago.",
+  },
+  {
+    src: "/assets/images/passeios/passeio-04.png",
+    alt: "Capuchin monkey among branches and green Amazon vegetation.",
+    altPt: "Macaco-prego entre galhos e vegetação verde da Amazônia.",
+  },
+  {
+    src: "/assets/images/passeios/passeio-05.png",
+    alt: "Capuchin monkey sitting on a branch under the forest canopy.",
+    altPt: "Macaco-prego sentado em galho sob a copa da floresta.",
+  },
+  {
+    src: "/assets/images/passeios/passeio-06.png",
+    alt: "Regional fruit and snacks arranged on palm leaves during a forest outing.",
+    altPt: "Frutas e lanches regionais sobre folhas de palmeira durante passeio na floresta.",
+  },
+  {
+    src: "/assets/images/passeios/passeio-07.png",
+    alt: "Guests swimming in Amazon waters during a wildlife observation outing.",
+    altPt: "Hóspedes nadando em águas amazônicas durante passeio de observação de fauna.",
+  },
+  {
+    src: "/assets/images/passeios/passeio-08.png",
+    alt: "Guide holding a piranha during a forest and fishing activity.",
+    altPt: "Guia segurando uma piranha durante atividade de floresta e pesca.",
+  },
+  {
+    src: "/assets/images/passeios/passeio-09.png",
+    alt: "Guests swimming beside a boat at sunset on the Amazon water.",
+    altPt: "Hóspedes nadando ao lado do barco ao pôr do sol nas águas amazônicas.",
+  },
+  {
+    src: "/assets/images/passeios/passeio-10.png",
+    alt: "Group selfie from a boat during an Amazon tour.",
+    altPt: "Selfie em grupo dentro do barco durante passeio amazônico.",
+  },
+  {
+    src: "/assets/images/passeios/passeio-11.png",
+    alt: "Regional fruit breakfast served on palm leaves in the forest.",
+    altPt: "Café regional com frutas servido sobre folhas de palmeira na floresta.",
+  },
+  {
+    src: "/assets/images/passeios/passeio-12.png",
+    alt: "Caiman observed at night on the forest floor.",
+    altPt: "Jacaré observado à noite no chão da floresta.",
+  },
+  {
+    src: "/assets/images/passeios/passeio-13.png",
+    alt: "Guest rappelling from a tall tree during a guided adventure activity.",
+    altPt: "Hóspede praticando rapel em árvore alta durante atividade guiada de aventura.",
+  },
+  {
+    src: "/assets/images/passeios/passeio-14.png",
+    alt: "Fresh piranhas held above the river after a fishing activity.",
+    altPt: "Piranhas pescadas seguradas sobre o rio após atividade de pesca.",
+  },
+  {
+    src: "/assets/images/passeios/passeio-15.png",
+    alt: "Birds gathered on branches along an Amazon riverbank.",
+    altPt: "Aves reunidas em galhos na margem de rio amazônico.",
+  },
+  {
+    src: "/assets/images/passeios/passeio-16.png",
+    alt: "Small forest mammal partly hidden in green grass.",
+    altPt: "Pequeno mamífero da floresta parcialmente escondido na grama verde.",
+  },
+  {
+    src: "/assets/images/passeios/passeio-17.png",
+    alt: "Guests rappelling beside a large Amazon tree.",
+    altPt: "Hóspedes praticando rapel ao lado de grande árvore amazônica.",
+  },
+  {
+    src: "/assets/images/passeios/passeio-18.png",
+    alt: "Sloth resting on tree branches in the Amazon forest.",
+    altPt: "Preguiça descansando em galhos na floresta amazônica.",
+  },
+  {
+    src: "/assets/images/passeios/passeio-19.png",
+    alt: "Guest secured with ropes high in an Amazon tree at golden hour.",
+    altPt: "Hóspede com equipamentos de corda no alto de árvore amazônica ao fim da tarde.",
+  },
+  {
+    src: "/assets/images/passeios/passeio-20.png",
+    alt: "Wooden canoe resting in calm flooded forest water.",
+    altPt: "Canoa de madeira em águas calmas de floresta alagada.",
+  },
+  {
+    src: "/assets/images/passeios/passeio-21.png",
+    alt: "Small forest mammal eating in the grass.",
+    altPt: "Pequeno mamífero da floresta se alimentando na grama.",
+  },
+  {
+    src: "/assets/images/passeios/passeio-22.png",
+    alt: "Hammocks set up for a forest camp at sunrise.",
+    altPt: "Redes montadas em acampamento na floresta ao nascer do sol.",
+  },
+  {
+    src: "/assets/images/passeios/passeio-23.png",
+    alt: "View from high in a tree during a guided rope activity in the forest.",
+    altPt: "Vista do alto de uma árvore durante atividade guiada com cordas na floresta.",
+  },
+  {
+    src: "/assets/images/passeios/passeio-24.png",
+    alt: "Green iguana resting on tree branches.",
+    altPt: "Iguana verde descansando em galhos de árvore.",
+  },
+  {
+    src: "/assets/images/passeios/passeio-25.png",
+    alt: "Amazon sunset reflected on calm water.",
+    altPt: "Pôr do sol amazônico refletido em águas calmas.",
+  },
+  {
+    src: "/assets/images/passeios/passeio-26.png",
+    alt: "Toucan with a colorful beak perched near a wooden railing.",
+    altPt: "Tucano com bico colorido pousado perto de guarda-corpo de madeira.",
+  },
+  {
+    src: "/assets/images/passeios/passeio-27.png",
+    alt: "Green lizard moving across sandy forest ground.",
+    altPt: "Lagarto verde caminhando pelo solo arenoso da floresta.",
+  },
+];
+
+export const alimentacaoGalleryImages = [
+  {
+    src: "/assets/images/alimentacao/alimentacao-01.png",
+    alt: "Fresh lime drinks served on a wooden bar at the lodge.",
+    altPt: "Bebidas com limão servidas no balcão de madeira da pousada.",
+  },
+  {
+    src: "/assets/images/alimentacao/alimentacao-02.png",
+    alt: "Dining table with fruit, juice and regional meal service in the lodge.",
+    altPt: "Mesa de refeição com frutas, suco e serviço regional na pousada.",
+  },
+  {
+    src: "/assets/images/alimentacao/alimentacao-03.png",
+    alt: "Regional dinner buffet with rice, pasta, salad and stew on a wooden table.",
+    altPt: "Buffet regional de jantar com arroz, macarrão, salada e ensopado sobre mesa de madeira.",
+  },
+  {
+    src: "/assets/images/alimentacao/alimentacao-04.png",
+    alt: "Wooden dining table set with plates, glasses and condiments.",
+    altPt: "Mesa de madeira posta com pratos, copos e temperos.",
+  },
+  {
+    src: "/assets/images/alimentacao/alimentacao-05.png",
+    alt: "Regional lunch buffet with fish, sides, fruit and juices.",
+    altPt: "Buffet regional de almoço com peixe, acompanhamentos, frutas e sucos.",
+  },
+  {
+    src: "/assets/images/alimentacao/alimentacao-06.png",
+    alt: "Breakfast table with bread, fruit, juices, coffee and regional sides.",
+    altPt: "Mesa de café da manhã com pães, frutas, sucos, café e acompanhamentos regionais.",
+  },
+  {
+    src: "/assets/images/alimentacao/alimentacao-07.png",
+    alt: "Breakfast buffet with coffee, cake, bread, fruit and juices in the dining room.",
+    altPt: "Buffet de café da manhã com café, bolo, pães, frutas e sucos no refeitório.",
+  },
+];
+
 export const routes = {
   en: {
     home: "/",
@@ -434,7 +683,9 @@ export const activities = {
 export const gallery = [
   { category: "Water", categoryPt: "Águas", image: images.hero },
   { category: "Lodge", categoryPt: "Pousada", image: images.lodge },
-  { category: "Rooms", categoryPt: "Chalés", image: images.room },
+  { category: "Chalet", categoryPt: "CHALÉ", image: chaletGalleryImages[6], images: chaletGalleryImages },
+  { category: "Tours", categoryPt: "PASSEIOS", image: passeioGalleryImages[2], images: passeioGalleryImages },
+  { category: "Food", categoryPt: "ALIMENTAÇÃO", image: alimentacaoGalleryImages[5], images: alimentacaoGalleryImages },
   { category: "Water", categoryPt: "Águas", image: images.canoe },
   { category: "Water", categoryPt: "Águas", image: images.sunset },
   { category: "Jungle", categoryPt: "Floresta", image: images.trek },

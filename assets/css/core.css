@@ -340,10 +340,33 @@ a, button, input, select, textarea { font: inherit; }
 .gallery-tile:nth-child(3n + 1) { grid-row: span 2; min-height: 570px; }
 .gallery-tile:hover img, .mini-gallery button:hover img { transform: scale(1.04); opacity: 0.78; }
 .gallery-tile span { position: absolute; left: 16px; bottom: 16px; color: white; font-size: 0.72rem; font-weight: 850; letter-spacing: 0.15em; text-transform: uppercase; }
-.lightbox { position: fixed; inset: 0; z-index: 5000; display: grid; place-items: center; padding: 24px; background: rgba(8, 10, 8, 0.92); }
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) 64px;
+  place-items: center;
+  gap: 18px;
+  padding: 24px;
+  background: rgba(8, 10, 8, 0.92);
+}
 .lightbox[hidden] { display: none; }
-.lightbox img { max-height: 86vh; object-fit: contain; }
-.lightbox button { position: fixed; top: 20px; right: 20px; width: 48px; height: 48px; border: 1px solid rgba(255, 255, 255, 0.35); background: transparent; color: white; cursor: pointer; }
+.lightbox-frame { margin: 0; display: grid; place-items: center; gap: 12px; min-width: 0; }
+.lightbox img { max-width: 100%; max-height: 84vh; object-fit: contain; }
+.lightbox button {
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(16, 19, 15, 0.38);
+  color: white;
+  cursor: pointer;
+  font-weight: 900;
+}
+.lightbox button:hover { background: var(--c-sand); color: var(--c-dark); }
+.lightbox-close { position: fixed; top: 20px; right: 20px; }
+.lightbox-nav { align-self: center; font-size: 1.35rem; }
+.lightbox-counter { min-height: 22px; color: rgba(255, 255, 255, 0.72); font-size: 0.74rem; font-weight: 850; letter-spacing: 0.14em; text-transform: uppercase; }
 
 .booking-cta { width: min(1180px, calc(100% - 36px)); margin: 0 auto; text-align: center; }
 .booking-cta p { max-width: 640px; margin: 22px auto 30px; color: var(--c-muted); }
@@ -461,6 +484,9 @@ a, button, input, select, textarea { font: inherit; }
   .card-img-wrap { order: -1; min-height: 280px; }
   .pillar-grid, .experience-grid, .related-grid, .journey-list, .mini-gallery, .masonry-grid, .check-list, .footer-grid { grid-template-columns: 1fr; }
   .activity-section > img, .image-text-section > img, .gallery-tile:nth-child(3n + 1) { min-height: 340px; }
+  .lightbox { grid-template-columns: 48px minmax(0, 1fr) 48px; gap: 8px; padding: 72px 12px 22px; }
+  .lightbox img { max-height: 78vh; }
+  .lightbox-close { top: 14px; right: 14px; }
   .timeline section { grid-template-columns: 1fr; }
   .footer-headline { overflow-wrap: anywhere; }
 }
